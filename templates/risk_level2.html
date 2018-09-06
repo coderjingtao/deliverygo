@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>T-Watch</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"><!-- Google web font "Open Sans" -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/jquery.ui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}"> 
+    
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600,200italic,600italic&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+
+    <!--script src="http://phuonghuynh.github.io/js/bower_components/jquery/dist/jquery.min.js"></script-->
+    <script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/d3-transform/src/d3-transform.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/extarray.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/misc.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/micro-observer.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/microplugin/src/microplugin.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/bubble-chart.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/central-click/central-click.js"></script>
+    <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
+    <style>
+        .bubbleChart {
+          min-width: 500px;
+          max-width: 1200px;
+          height: 700px;
+          margin: 0 auto;
+        }
+        .bubbleChart svg{
+          background: #000000;
+        }
+        table {
+          border-collapse: collapse;
+          border: 1px solid black;
+        }
+        th {
+          background-color: #4CAF50;
+          color: white;
+        }
+        table, th, td {
+          border: 1px solid #FFF;
+        }
+      </style>
+</head>
+
+<body>
+<!--add by liu-->
+<div class="navbar navbar-fixed-top custom-navbar" role="navigation">
+    <div class="container">
+        <!-- NAVBAR HEADER -->
+        <div class="navbar-header">
+           <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+           </button>
+           <!-- lOGO -->
+           <div class="tm-site-logo"></div>
+           <a href="/index" class="tm-text-white"><h1 class="pl-4 tm-site-title">DeliveryGo</h1></a>
+        </div>
+
+        <!-- MENU LINKS -->
+        <div class="navbar-header">
+            <ul class="nav pull-right">
+                 <li><a href="/index" class="smoothScroll">Home</a></li>
+                 <!--li><a href="#about" class="smoothScroll">About</a></li-->
+                 <li><a href="/cityrisk" class="smoothScroll">Risk Analysis</a></li>  
+                 <li><a href="/rules" class="smoothScroll">Road Rules</a></li>
+                 <!--li><a href="/analysis" class="smoothScroll">Road Closure</a></li>
+                 <li><a href="/game" class="smoothScroll">Road Vote</a></li>
+                 <li><a href="/game" class="smoothScroll">Login / Register</a></li-->
+            </ul>
+       </div>
+    
+    </div>
+</div> 
+<!--end by liu -->
+
+    <div class="container">
+
+        <div class="container tm-container-2">
+            
+			<div class="row">
+                <div class="col-lg-12">
+                    <h2 class="tm-welcome-text">Some of the most dangerous areas</h2>
+                </div>
+            </div>
+            <!-- search bar -->
+                    <form action="/searchCity" method="GET" class="tm-contact-form">
+                    <div class="row">
+                        <div class="form-group col-xl-6">
+                            <input type="text" id="city" name="city" class="form-control" placeholder="Please Input City Name..." required/>
+                        </div>
+                        <div class="form-group col-xl-6">
+                            <button class="btn tm-btn-send" type="submit"">Search</button>
+                        </div>
+                    </div>
+                    </form>
+            <!-- search bar end -->
+            {% if city_list %}
+            <table style="width:100%">
+              <tr>
+                <th>City</th>
+                <th>1am</th> 
+                <th>2am</th>
+                <th>3am</th>
+                <th>4am</th>
+                <th>5am</th>
+                <th>6am</th>
+                <th>7am</th>
+                <th>8am</th>
+                <th>9am</th>
+                <th>10am</th>
+                <th>11am</th>
+                <th>12am</th>
+                <th>1pm</th> 
+                <th>2pm</th>
+                <th>3pm</th>
+                <th>4pm</th>
+                <th>5pm</th>
+                <th>6pm</th>
+                <th>7pm</th>
+                <th>8pm</th>
+                <th>9pm</th>
+                <th>10pm</th>
+                <th>11pm</th>
+                <th>12pm</th>
+              </tr>
+              {% for city in city_list %}
+              <tr>
+                <td>{{ city.name }}</td>
+                <td>{{ city.c1a }}</td> 
+                <td>{{ city.c2a }}</td>
+                <td>{{ city.c3a }}</td>
+                <td>{{ city.c4a }}</td>
+                <td>{{ city.c5a }}</td>
+                <td>{{ city.c6a }}</td>
+                <td>{{ city.c7a }}</td>
+                <td>{{ city.c8a }}</td>
+                <td>{{ city.c9a }}</td>
+                <td>{{ city.c10a }}</td>
+                <td>{{ city.c11a }}</td>
+                <td>{{ city.c12a }}</td>
+                <td>{{ city.c1p }}</td>
+                <td>{{ city.c2p }}</td>
+                <td>{{ city.c3p }}</td>
+                <td>{{ city.c4p }}</td>
+                <td>{{ city.c5p }}</td>
+                <td>{{ city.c6p }}</td>
+                <td>{{ city.c7p }}</td>
+                <td>{{ city.c8p }}</td>
+                <td>{{ city.c9p }}</td>
+                <td>{{ city.c10p }}</td>
+                <td>{{ city.c11p }}</td>
+                <td>{{ city.c12p }}</td>
+              </tr>
+              {% endfor %}
+            </table>
+            {% else %}
+              <p>Oops! There is no relevant data.</p>
+            {% endif %}
+      <br>
+      <p>Accidents of the most dangerous areas in last 5 years</p>
+            <div class="bubbleChart"></div>
+			<hr>
+			<div class="row">
+				<div class="row tm-section-mb tm-section-mt">
+					<div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+						<h3 class="mt-2 mb-3 tm-text-gray">AI-based Traffic Warning</h3>
+						<p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum.</p>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+						<h3 class="mt-2 mb-3 tm-text-gray">Restaurant Recommendation</h3>
+						<p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum.</p>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-12">
+						<h3 class="mt-2 mb-3 tm-text-gray">The Tip Analysis</h3>
+						<p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum.</p>
+                </div>
+            </div>
+        <hr>
+        <!-- Footer -->
+        <footer class="row mt-5 mb-5">
+            <div class="col-lg-12">
+                <p class="text-center tm-text-gray tm-copyright-text mb-0">Copyright &copy;
+                    <span class="tm-current-year">2018</span> T-Watch Ltd.  | Designer: <a href="" class="tm-text-white">Jingtao Liu</a> 
+                </p>
+            </div>
+        </footer>
+    </div>
+    <!-- .container -->
+
+</body>
+</html>
+<script>
+//read excel by liujingtao
+// var cities = [];
+// 		d3.csv("{% static 'csv/city1.csv' %}",function(error,data){
+// 			for(var i=0; i<data.length;i++){
+//                 cities.push({text:data[i].Cities,count:data[i].c1});
+// 			}
+//         });
+//read excel end
+var bubbleChart;
+$(document).ready(function () {
+    bubbleChart = new d3.svg.BubbleChart({
+    supportResponsive: true,
+    //container: => use @default
+    size: 600,
+    //viewBoxSize: => use @default
+    innerRadius: 600 / 3.5,
+    //outerRadius: => use @default
+    radiusMin: 50,
+    //radiusMax: use @default
+    //intersectDelta: use @default
+    //intersectInc: use @default
+    //circleColor: use @default
+    data: {
+      items: [
+        //{text: "BANYULE", count: "1122"},
+        //{text: "BAYSIDE", count: "1081"},
+        {text: "BOROONDARA", count: "1828"},
+        {text: "BRIMBANK", count: "2555"},
+        //{text: "CARDINIA", count: "1156"},
+        {text: "CASEY", count: "3058"},
+        {text: "DANDENONG", count: "2753"},
+        {text: "DAREBIN", count: "1939"},
+        //{text: "FRANKSTON", count: "1373"},
+        //{text: "GLEN EIRA", count: "1614"},
+        //{text: "HOBSONS BAY", count: "1070"},
+        {text: "HUME", count: "2391"},
+        {text: "KINGSTON", count: "1848"},
+        // {text: "KNOX", count: "1557"},
+        // {text: "MANNINGHAM", count: "919"},
+        // {text: "MARIBYRNONG", count: "1084"},
+        // {text: "MAROONDAH", count: "1201"},
+         {text: "MELBOURNE", count: "4488"},
+        // {text: "MELTON", count: "1172"},
+         {text: "MONASH", count: "2219"},
+        // {text: "MOONEE VALLEY", count: "1294"},
+         {text: "MORELAND", count: "2249"},
+        // {text: "MORNINGTON PENINSULA", count: "1572"},
+        // {text: "NILLUMBIK", count: "696"},
+        // {text: "PORT PHILLIP", count: "1589"},
+        // {text: "STONNINGTON", count: "1613"},
+        // {text: "WHITEHORSE", count: "1463"},
+         {text: "WHITTLESEA", count: "2006"},
+        // {text: "WYNDHAM", count: "1653"},
+        // {text: "YARRA", count: "1757"},
+         {text: "YARRA RANGES", count: "2181"}
+      ],
+      eval: function (item) {return item.count;},
+      classed: function (item) {return item.text.split(" ").join("");}
+    },
+    plugins: [
+      {
+        name: "central-click",
+        options: {
+          //text: "(See more detail)",
+          style: {
+            "font-size": "12px",
+            "font-style": "italic",
+            "font-family": "Source Sans Pro, sans-serif",
+            //"font-weight": "700",
+            "text-anchor": "middle",
+            "fill": "white"
+          },
+          attr: {dy: "65px"},
+          centralClick: function() {
+            alert("Hello, World!");
+          }
+        }
+      },
+      {
+        name: "lines",
+        options: {
+          format: [
+            {// Line #0
+              textField: "count",
+              classed: {count: true},
+              style: {
+                "font-size": "28px",
+                "font-family": "Source Sans Pro, sans-serif",
+                "text-anchor": "middle",
+                fill: "white"
+              },
+              attr: {
+                dy: "0px",
+                x: function (d) {return d.cx;},
+                y: function (d) {return d.cy;}
+              }
+            },
+            {// Line #1
+              textField: "text",
+              classed: {text: true},
+              style: {
+                "font-size": "14px",
+                "font-family": "Source Sans Pro, sans-serif",
+                "text-anchor": "middle",
+                fill: "white"
+              },
+              attr: {
+                dy: "20px",
+                x: function (d) {return d.cx;},
+                y: function (d) {return d.cy;}
+              }
+            }
+          ],
+          centralFormat: [
+            {// Line #0
+              style: {"font-size": "50px"},
+              attr: {}
+            },
+            {// Line #1
+              style: {"font-size": "30px"},
+              attr: {dy: "40px"}
+            }
+          ]
+        }
+      }]
+  });
+});
+
+    //自动填充
+    $(function() {
+        var availableTags = [
+        "BANYULE",
+        "BAYSIDE",
+        "BOROONDARA",
+        "BRIMBANK",
+        "CARDINIA",
+        "CASEY",
+        "DANDENONG",
+        "DAREBIN",
+        "FRANKSTON",
+        "GLEN EIRA",
+        "HOBSONS BAY",
+        "HUME",
+        "KINGSTON",
+        "KNOX",
+        "MANNINGHAM",
+        "MARIBYRNONG",
+        "MAROONDAH",
+        "MELBOURNE",
+        "MELTON",
+        "MONASH",
+        "MOONEE VALLEY",
+        "MORELAND",
+        "MORNINGTON PENINSULA",
+        "NILLUMBIK",
+        "PORT PHILLIP",
+        "STONNINGTON",
+        "WHITEHORSE",
+        "WHITTLESEA",
+        "WYNDHAM",
+        "YARRA",
+        "YARRA RANGES"
+        ];
+        $( "#city" ).autocomplete({
+          source: availableTags
+        });
+      });
+
+function search(){
+    var city = document.getElementById('city').value;
+
+}
+
+</script>

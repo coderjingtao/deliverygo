@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>DirectionsService API</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"><!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/jquery.ui.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/templatemo-style.css"> 
+	<!-- google map -->
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBREuFDLAYSrxjj69koGsHLX_VejDMKWuE"></script>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+    <!-- script src="js/templatemo-script.js"></script -->
+<script>
+var map;
+var directionsService;
+var directionsRenderer;
+
+function initialize() {
+  // initial services
+  directionsService = new google.maps.DirectionsService();
+  var rendererOptions = { draggable: true };
+  directionsRenderer= new google.maps.DirectionsRenderer(rendererOptions);
+  
+  var monash = new google.maps.LatLng(-37.8770054,145.0420786); 
+  var mapProp = {
+    center: monash,
+    zoom:14,
+  };
+  map = new google.maps.Map(document.getElementById("googleMap"),mapProp); //��ʾ���map,����Ӷ��map����
+
+  //marker
+  var marker=new google.maps.Marker({
+	position:monash,
+	animation:google.maps.Animation.BOUNCE, //�ɶ���ǩ
+	icon:'img/rider2.png'
+  });
+  marker.setMap(map);
+
+  //window
+  var infowindow = new google.maps.InfoWindow({
+	content:"<p style='color:red'>Help me!</p>"
+  });
+  infowindow.open(map,marker);
+
+  directionsRenderer.setMap(map);
+  directionsRenderer.setPanel(document.getElementById("directionsPanel"));
+
+  google.maps.event.addListener(directionsRenderer, 'directions_changed', function() {
+    computeTotalDistance(directionsRenderer.directions);
+  });
+
+  var trafficLayer = new google.maps.TrafficLayer();
+        trafficLayer.setMap(map);
+} // initial end
+
+function searchRoute(){
+	var start = document.getElementById('origin').value;
+	var stop = document.getElementById('stopover').value;
+	var end = document.getElementById('destination').value;
+	var selectedMode = document.getElementById('mode').value;
+	var request = {
+		origin: start,
+		destination: end,
+		travelMode: google.maps.TravelMode[selectedMode],
+		waypoints: [
+		{
+			location: stop,
+			stopover: true
+		}
+		],
+		provideRouteAlternatives: false
+	};
+
+	//����·��
+	directionsService.route(request, function(result, status){
+		if (status == 'OK'){
+			//console.log(result.geocoded_waypoints[0].place_id);
+			directionsRenderer.setDirections(result);
+		}
+	});
+}
+
+      function computeTotalDistance(result) {
+        var total = 0;
+        var myroute = result.routes[0];
+        for (var i = 0; i < myroute.legs.length; i++) {
+          total += myroute.legs[i].distance.value;
+        }
+        total = total / 1000;
+        document.getElementById('total').innerHTML = total + ' km';
+      }
+
+
+// must be last executed.
+google.maps.event.addDomListener(window, 'load', initialize);
+
+//�Զ����start
+$(function() {
+    var availableTags = [
+      "100 Waverley Rd, Malvern East VIC 3145",
+	  "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "Chadstone VIC 3148",
+	  "Caulfield, VIC",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+	  "Marvern East, VIC",
+	  "Melbourne, VIC",
+	  "Monash University, Dandenong Road, Caulfield East VIC",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme",
+	  "Sydney, NSW"
+    ];
+    $( "#origin" ).autocomplete({
+      source: availableTags
+    });
+	$( "#stopover" ).autocomplete({
+      source: availableTags
+    });
+	$( "#destination" ).autocomplete({
+      source: availableTags
+    });
+  });
+
+
+</script>
+</head>
+
+<body>
+    <div class="container">
+	    <!-- Banner -->
+		<div class="row">
+            <div class="col-lg-12">
+                <header class="text-center tm-site-header">
+                    <div class="tm-site-logo"></div>
+                    <h1 class="pl-4 tm-site-title">Trust me, Follow me</h1>
+                </header>
+            </div>
+        </div>
+			<div class="row tm-section-mt">
+               <div class="col-lg-12 mb-5">
+					<!--form method="post" class="tm-contact-form" -->
+                    <div class="row">
+                        <div class="form-group col-xl-3">
+                            <input type="text" id="origin" name="origin" class="form-control" placeholder="Input Origin..." required/>
+                        </div>
+						<div class="form-group col-xl-3">
+                            <input type="text" id="stopover" name="stopover" class="form-control" placeholder="Input Stopover..." required/>
+                        </div>
+                        <div class="form-group col-xl-3">
+                            <input type="text" id="destination" name="destination" class="form-control" placeholder="Input Destination..." required/>
+                        </div>
+						<div class="form-group col-xl-2">
+                            <select id="mode" onchange="searchRoute();" class="select">
+								<option value="BICYCLING" selected>Bicycling</option>
+								<option value="DRIVING">Driving</option>
+								<option value="WALKING">Walking</option>
+								<option value="TRANSIT">Transit</option>
+							</select>
+                        </div>
+						<div class="form-group col-xl-1">
+                            <button class="btn tm-btn-send" onclick="searchRoute()">Search</button>
+                        </div>
+                    </div>
+					<!--/form-->
+				</div>
+                <div id="googleMap" style="width:100%;height:500px;">
+                </div>
+				<div id="right-panel">
+					<p>Total Distance: <span id="total"></span></p>
+				</div>
+				<div id="directionsPanel" style="float:right;width:100%;height:100%;color:white;background: white;"></div>
+
+        <hr>
+        <!-- Footer -->
+        <footer class="row mt-5 mb-5">
+            <div class="col-lg-12">
+                <p class="text-center tm-text-gray tm-copyright-text mb-0">Copyright &copy;
+                    <span class="tm-current-year">2018</span> T-Watch Ltd.  | Designer: <a href="" class="tm-text-white">Jingtao Liu</a> 
+                </p>
+            </div>
+        </footer>
+    </div>
+    <!-- .container -->
+
+
+
+</body>
+</html>

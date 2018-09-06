@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>city:</title>
+    <style>
+        body {
+            width: 960px;
+            margin: 0 auto;
+        }
+        .sub {
+            margin: 20px 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>City:</h1>
+    <hr>
+    {% for city in city_list %}
+    <dl class="sub">
+        <dt><a href='city/{{ city.id }}'>{{ city.name }}</a></dt>
+        <dd>{{ city.parent }}</dd>
+    </dl>
+    {% endfor %}
+</body>
+</html>
