@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Road Blocks</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"><!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}"> 
+
+    <!-- google map -->
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBREuFDLAYSrxjj69koGsHLX_VejDMKWuE&libraries=places"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/jquery.ui.css' %}">
+    
+    <script>
+        var map;
+        var geocoder;
+        var markers = [];
+        
+        function initialize() {
+          geocoder = new google.maps.Geocoder();
+          var latlng = new google.maps.LatLng(-37.814, 144.9633);
+          var mapProp = {
+            center: latlng,
+            zoom:7,
+          };
+          map = new google.maps.Map(document.getElementById("googleMap"),mapProp); //显示多个map,则添加多个map对象
+        
+                //api
+                $.ajax({
+                url:"http://api.vicroads.vic.gov.au/vicroads/wfs?service=wfs&version=2.0.0&request=GetFeature&typeNames=vicroads:erc_point&&AUTH=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNhdGtpbnNvbiIsImdpdmVuTmFtZSI6IkNocmlzdG9waGVyIEF0a2luc29uIiwiZW1haWwiOiJjYXRraW5zb25AdnJhcGkudmljcm9hZHMudmljLmdvdi5hdSIsImV4cCI6MTU2NTY1MTU3NCwic3ViIjoidmljYXBpL2NhdGtpbnNvbi02MDQ3ZjdjYi05YjdhLTQxZmYtYWUwNi04YjFhYzI4NTNmM2QifQ.8CbG9G-D99peVQRTzmM---vc72kgv97v6Ns90-_Z6Wc",
+                type:"get",
+                dataType:"xml",
+                success: function(xml) {
+                    //console.log(xml);
+                    $(xml).find("wfs\\:member").each(function(i) { 
+                        var coordinate = $(this).children("vicroads\\:erc_point").children("vicroads\\:erc_point").children("gml\\:Point").children("gml\\:pos").text(); 
+                        var roadname = $(this).children("vicroads\\:erc_point").children("vicroads\\:closed_road_name").text();  
+                        var locality = $(this).children("vicroads\\:erc_point").children("vicroads\\:incident_locality").text(); 
+                        var s = coordinate.split(" ");
+                        var latitude = s[0];
+                        var longitude = s[1];
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(latitude, longitude),
+                            map:map,
+                            title: roadname+':'+locality,
+                            icon:'../static/images/erc.jpg'
+                        });
+                        markers.push(marker);
+                    });
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
+                },
+                });
+                //end api
+                setMapOnAll(map);
+        } // initial end
+        
+        function codeAddress(){
+            var address = document.getElementById('localtion').value;
+            geocoder.geocode( { 'address': address}, function(results, status){
+                if (status == 'OK') {
+                    map.setCenter(results[0].geometry.location);
+                    map.setZoom(12);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location,
+                        animation:google.maps.Animation.BOUNCE, //可动标签
+                        icon:'../static/images/rider2.png'
+                    });
+                }else{
+                        alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+        
+         function setMapOnAll(map) {
+             for (var i = 0; i < markers.length; i++) {
+                  markers[i].setMap(map);
+                }
+        }
+        
+        function changeType(){
+            setMapOnAll(null);
+            markers = [];
+            var selectedMode = document.getElementById('mode').value;
+        
+            if(selectedMode == 'erc_point')
+            {	//api
+                $.ajax({
+                url:"http://api.vicroads.vic.gov.au/vicroads/wfs?service=wfs&version=2.0.0&request=GetFeature&typeNames=vicroads:erc_point&&AUTH=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNhdGtpbnNvbiIsImdpdmVuTmFtZSI6IkNocmlzdG9waGVyIEF0a2luc29uIiwiZW1haWwiOiJjYXRraW5zb25AdnJhcGkudmljcm9hZHMudmljLmdvdi5hdSIsImV4cCI6MTU2NTY1MTU3NCwic3ViIjoidmljYXBpL2NhdGtpbnNvbi02MDQ3ZjdjYi05YjdhLTQxZmYtYWUwNi04YjFhYzI4NTNmM2QifQ.8CbG9G-D99peVQRTzmM---vc72kgv97v6Ns90-_Z6Wc",
+                type:"get",
+                dataType:"xml",
+                success: function(xml) {
+                    $(xml).find("wfs\\:member").each(function(i) { 
+                        var coordinate = $(this).children("vicroads\\:erc_point").children("vicroads\\:erc_point").children("gml\\:Point").children("gml\\:pos").text(); 
+                        var roadname = $(this).children("vicroads\\:erc_point").children("vicroads\\:closed_road_name").text();  
+                        var locality = $(this).children("vicroads\\:erc_point").children("vicroads\\:incident_locality").text(); 
+                        var s = coordinate.split(" ");
+                        var latitude = s[0];
+                        var longitude = s[1];
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(latitude, longitude),
+                            map:map,
+                            title: roadname+':'+locality,
+                            icon:'../static/images/erc.jpg'
+                        });
+                        markers.push(marker);
+                    });
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
+                },
+                });
+                //end api
+                setMapOnAll(map);
+            }else{
+                $.ajax({
+                url:"http://api.vicroads.vic.gov.au/vicroads/wfs?service=wfs&version=2.0.0&request=GetFeature&typeNames=vicroads:rwe_point&AUTH=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNhdGtpbnNvbiIsImdpdmVuTmFtZSI6IkNocmlzdG9waGVyIEF0a2luc29uIiwiZW1haWwiOiJjYXRraW5zb25AdnJhcGkudmljcm9hZHMudmljLmdvdi5hdSIsImV4cCI6MTU2NTY1MTU3NCwic3ViIjoidmljYXBpL2NhdGtpbnNvbi02MDQ3ZjdjYi05YjdhLTQxZmYtYWUwNi04YjFhYzI4NTNmM2QifQ.8CbG9G-D99peVQRTzmM---vc72kgv97v6Ns90-_Z6Wc",
+                type:"get",
+                dataType:"xml",
+                success: function(xml) {
+                    $(xml).find("wfs\\:member").each(function(i) {
+                        var coordinate = $(this).children("vicroads\\:rwe_point").children("vicroads\\:rwe_point").children("gml\\:Point").children("gml\\:pos").text(); 
+                        var roadname = $(this).children("vicroads\\:rwe_point").children("vicroads\\:subject_pref_rdname").text();  
+                        var locality = $(this).children("vicroads\\:rwe_point").children("vicroads\\:lrs_start_locality").text();  
+                        var s = coordinate.split(" ");
+                        var latitude = s[0];
+                        var longitude = s[1];
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(latitude, longitude),
+                            map:map,
+                            title: roadname+':'+locality,
+                            icon:'../static/images/rwe.png'
+                        });
+                        markers.push(marker);
+                    });
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
+                },
+            });
+            setMapOnAll(map);
+            }
+        }
+        
+        
+        // must be last executed.
+        google.maps.event.addDomListener(window, 'load', initialize);
+        
+        //自动填充start
+        $(function() {
+            var availableTags = [
+        "BANYULE",
+        "BAYSIDE",
+        "BOROONDARA",
+        "BRIMBANK",
+        "CARDINIA",
+        "CASEY",
+        "DANDENONG",
+        "DAREBIN",
+        "FRANKSTON",
+        "GLEN EIRA",
+        "HOBSONS BAY",
+        "HUME",
+        "KINGSTON",
+        "KNOX",
+        "MANNINGHAM",
+        "MARIBYRNONG",
+        "MAROONDAH",
+        "MELBOURNE",
+        "MELTON",
+        "MONASH",
+        "MONASH UNIVERSITY",
+        "MOONEE VALLEY",
+        "MORELAND",
+        "MORNINGTON PENINSULA",
+        "NILLUMBIK",
+        "PORT PHILLIP",
+        "STONNINGTON",
+        "WHITEHORSE",
+        "WHITTLESEA",
+        "WYNDHAM",
+        "YARRA",
+        "YARRA RANGES"
+            ];
+            $( "#localtion" ).autocomplete({
+              source: availableTags
+            });
+          });
+        </script>
+</head>
+
+<body>
+<!--add by liu-->
+<div class="navbar navbar-fixed-top custom-navbar" role="navigation">
+    <div class="container">
+        <!-- NAVBAR HEADER -->
+        <div class="navbar-header">
+           <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+           </button>
+           <!-- lOGO -->
+           <div class="tm-site-logo"></div>
+           <a href="/index" class="tm-text-white"><h1 class="pl-4 tm-site-title">DeliveryGo</h1></a>
+        </div>
+
+      <!-- MENU LINKS -->
+    <!-- MENU LINKS -->
+    <div class="navbar-header">
+        <ul class="nav pull-right">
+             <li><a href="/index" class="smoothScroll">Home</a></li>
+             <!--li><a href="#about" class="smoothScroll">About</a></li-->
+             <li><a href="/cityrisk" class="smoothScroll">Risk Analysis</a></li>  
+             <li><a href="/rules" class="smoothScroll">Road Rules</a></li>
+             <li><a href="/block" class="smoothScroll">Road Closure</a></li>
+             <!--li><a href="/game" class="smoothScroll">Road Vote</a></li>
+             <li><a href="/game" class="smoothScroll">Login / Register</a></li-->
+        </ul>
+    </div>
+    </div>
+</div> 
+<!--end by liu -->
+		
+        <div class="container tm-container-2">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row"><p class="smoothScroll"><a href="/index">Home</a> > <a href="">Road Closure</a></p></div>  
+                    <h2 class="tm-welcome-text">Road Closure & Road Works Points</h2>
+                </div>
+            </div>
+            <div class="row tm-section-mb">
+                <div class="col-lg-12 mb-5">
+                    <div class="row">
+                        <div class="form-group col-xl-4">
+                            <input type="text" id="localtion" name="location" class="form-control" placeholder="Search Location..." required/>
+                        </div>
+						<div class="form-group col-xl-4">
+                            <select id="mode" onchange="changeType();" class="select">
+								<option value="erc_point" selected>Emergency Road Closure Points</option>
+								<option value="rwe_point">Roadworks and Events Points</option>
+							</select>
+                        </div>
+						<div class="form-group col-xl-4">
+                            <button type="submit" class="btn tm-btn-send  pull-right" onclick="codeAddress()">Search It</button>
+                        </div>
+                    </div>
+				</div>
+              <div id="googleMap" style="width:100%;height:500px;">
+              </div>
+            </div>
+            <!--  horizontal line -->
+            <p>Date Source: <a href="http://api.vicroads.vic.gov.au" target="_blank">VicRoad Real Time API</a></p>
+            <hr>
+			<div class="row">
+				<div class="row tm-section-mb tm-section-mt">
+					<div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+						<h3 class="mt-2 mb-3 tm-text-gray">AI-based Traffic Warning</h3>
+						<p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum.</p>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+						<h3 class="mt-2 mb-3 tm-text-gray">Restaurant Recommendation</h3>
+						<p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum.</p>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-12">
+						<h3 class="mt-2 mb-3 tm-text-gray">The Tip Analysis</h3>
+						<p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum.</p>
+                </div>
+            </div>
+
+        <hr>
+        <!-- Footer -->
+        <footer class="row mt-5 mb-5">
+            <div class="col-lg-12">
+                <p class="text-center tm-text-gray tm-copyright-text mb-0">Copyright &copy;
+                    <span class="tm-current-year">2018</span> T-Watch Ltd.  | Designer: T-Watch Team
+                </p>
+            </div>
+        </footer>
+    </div>
+    <!-- .container -->
+
+    <script src="{% static 'js/templatemo-script.js' %}"></script>
+    <style>
+            a { color: #FFF; }
+            a:hover { 
+                color:#FFF; 
+                text-decoration:none; 
+            } 
+    </style>
+</body>
+</html>

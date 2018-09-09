@@ -23,10 +23,13 @@ urlpatterns = [
     path('ruledetail/<int:no>',views.getNewsDetail),
     path('cityrisk',views.cityRiskAll),
     path('searchCity/',views.cityRiskByName),
+    path('block/',views.roadblock),
     path('admin/', admin.site.urls),
     path('risk/',include('risk.urls')),
     path('comment/',include('comment.urls')),
     path('good/<int:id>',views.make_comment),
     path('bad/<int:id>',views.make_comment),
+    path('about/',views.about),
+    path('team/',views.team),
     #re_path(r'^',views.index),
 ]

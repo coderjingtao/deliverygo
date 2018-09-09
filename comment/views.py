@@ -44,3 +44,13 @@ def make_comment(request, id):
     except suburb.DoesNotExist:
         ctx['code'] = 404
     return JsonResponse(ctx)
+
+def roadblock(request):
+    return render(request, 'road_block.html')
+
+def about(request):
+    return render(request, 'aboutus.html')
+
+def team(request):
+    return render(request, 'teaminfo.html')
+
