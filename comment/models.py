@@ -24,6 +24,16 @@ class Suburb(models.Model):
     city = models.ForeignKey(City, db_column='city_id', on_delete=PROTECT, related_name='+', verbose_name='city')
     good_count = models.IntegerField(default=0, db_column='good_count', verbose_name='good_count')
     bad_count = models.IntegerField(default=0, db_column='bad_count', verbose_name='bad_count')
+    star_total = models.FloatField(default=0, db_column='star_total',verbose_name='star_total')
+    star_count = models.IntegerField(default=0, db_column='star_count',verbose_name='star_count')
+
+    def _averageStar(self):
+        if self.star_count != 0 :
+            return round( (self.star_total / self.star_count),2 )
+        else:
+            return 0
+    rating = property(_averageStar)
+
     objects = models.Manager()
 
     class Meta(object):

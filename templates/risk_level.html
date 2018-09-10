@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>T-Watch</title>
+    <title>Risk Analysis</title>
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"><!-- Google web font "Open Sans" -->
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
@@ -55,6 +55,10 @@
           border: 1px solid #FFF;
         }
       </style>
+
+      <script>
+        
+      </script>
 </head>
 
 <body>
@@ -76,13 +80,12 @@
         <!-- MENU LINKS -->
         <div class="navbar-header">
             <ul class="nav pull-right">
-              <li><a href="/index" class="smoothScroll">Home</a></li>
-              <!--li><a href="#about" class="smoothScroll">About</a></li-->
-              <li><a href="/cityrisk" class="smoothScroll">Risk Analysis</a></li>  
-              <li><a href="/rules" class="smoothScroll">Road Rules</a></li>
-              <li><a href="/block" class="smoothScroll">Road Closure</a></li>
-              <!--li><a href="/game" class="smoothScroll">Road Vote</a></li>
-              <li><a href="/game" class="smoothScroll">Login / Register</a></li-->
+                <li><a href="/index" class="smoothScroll">Home</a></li>
+                <!--li><a href="#about" class="smoothScroll">About</a></li-->
+                <li><a href="/cityrisk" class="smoothScroll">Risk Analysis</a></li>  
+                <li><a href="/rules" class="smoothScroll">Road Rules</a></li>
+                <li><a href="/block" class="smoothScroll">Road Closure</a></li>
+                <li><a href="/showstar" class="smoothScroll">Safety Vote</a></li>
             </ul>
        </div>
     
@@ -204,14 +207,6 @@
 </body>
 </html>
 <script>
-//read excel by liujingtao
-// var cities = [];
-// 		d3.csv("{% static 'csv/city1.csv' %}",function(error,data){
-// 			for(var i=0; i<data.length;i++){
-//                 cities.push({text:data[i].Cities,count:data[i].c1});
-// 			}
-//         });
-//read excel end
 var bubbleChart;
 $(document).ready(function () {
     bubbleChart = new d3.svg.BubbleChart({

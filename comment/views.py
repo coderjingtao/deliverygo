@@ -48,6 +48,32 @@ def make_comment(request, id):
 def roadblock(request):
     return render(request, 'road_block.html')
 
+def safetyVote(request):
+    id = request.GET.get('id')
+    score = request.GET.get('score')
+    ctx = {'code':200}
+    try:
+        suburb = Suburb.objects.get(pk=id)
+        suburb.star_count +=1
+        suburb.star_total +=float(score)
+        ctx['result'] = suburb.rating
+        suburb.save()
+    except suburb.DoesNotExist:
+        ctx['code'] = 404
+    return JsonResponse(ctx)
+
+def starry(request): # the most romantic method
+    if request.path.startswith('/showstar'):
+        suburbs = Suburb.objects.filter(city__id=1)
+        resp = { 'city_list': City.objects.all(), 'suburb_list':suburbs }
+    else:
+        suburb_name = request.POST.get('suburb') #根据表单的name属性，不是id
+        pcode = request.POST.get('postcode')
+        city_id = request.POST.get('city')
+        suburbs = Suburb.objects.filter(city__id=city_id,name__icontains=suburb_name,postcode__contains=pcode) #大小写不敏感
+        resp = { 'city_list': City.objects.all(), 'suburb_list':suburbs }
+    return render(request,'vote.html', {'resp':resp} )
+
 def about(request):
     return render(request, 'aboutus.html')
 

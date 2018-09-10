@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-{% load staticfiles %}
 <html lang="en">
+{% load staticfiles %}
 <head>
     <meta charset="UTF-8">
     <title>suburb</title>
@@ -32,6 +32,9 @@
             text-align: center;
         	margin-bottom: 10px;
 		}
+        .star{
+            width: 200px;
+        }
     </style>
 </head>
 <body>
@@ -43,18 +46,15 @@
             <p>{{ s.postcode }}</p>
             <p><strong>CITY</strong></p>
             <p>{{ s.city }}</p>
-            <a href="/good/{{ s.id }}" class="button">好评({{ s.good_count }})</a>
-            <a href="/bad/{{ s.id }}" class="button">差评({{ s.bad_count }})</a>
+            <a href="/good/{{ s.id }}" class="button">Good({{ s.good_count }})</a>
+            <a href="/bad/{{ s.id }}" class="button">Bad({{ s.bad_count }})</a>
         </div>
-        <div class="potrait">
-            {% if s.photo %}
-            <img src="{% static s.photo %}">
-            {% endif %}
-        </div>
+        <div class="star" id="{{ s.id }}" rating="{{ s.rating }}"></div>
         <hr>
     </div>
     {% endfor %}
-    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery.raty.js' %}"></script>
     <script>
        $(function() {
            $('.basic .button').on('click', function(evt) {
@@ -73,6 +73,31 @@
                });
            });
        });
+
+    $('.star').raty({
+	half: false,
+    halfShow: true,
+    score: function(){
+		return $(this).attr('rating');
+	},
+	size: 24,
+	starHalf:   '../../static/img/star-half-big.png',
+    starOff:    '../../static/img/star-off-big.png',
+    starOn:     '../../static/img/star-on-big.png',
+	click: function(score, evt){
+        var url='/vote/?id='+$(this).attr('id')+'&score='+score;
+        $.ajax({
+                   'url': url,
+                   'type': 'get',
+                   'dataType': 'json',
+                   'success': function(json) {
+                       if (json.code == 200) {
+                        $($(this).attr('id')).raty('score', json.result);
+                       }
+                   }
+               });
+	}
+});
     </script>
 </body>
 </html>
