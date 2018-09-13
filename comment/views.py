@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from comment.models import City, Suburb, CityRisk
 from django.http import JsonResponse
+from django.core import serializers
 
 # Create your views here.
 def index(request):
@@ -80,3 +81,10 @@ def about(request):
 def team(request):
     return render(request, 'teaminfo.html')
 
+def d2(request):
+    return render(request, 'd3.html')
+
+def d3(request):
+    cities = CityRisk.objects.all()
+    cities_serilized =  serializers.serialize('json', cities)
+    return JsonResponse(cities_serilized,safe=False)

@@ -9,7 +9,8 @@
     <title>Safety Vote</title>
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"><!-- Google web font "Open Sans" -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!--link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"-->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/jquery.ui.css' %}">
     <!-- Main CSS -->
     <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}"> 
@@ -139,9 +140,28 @@
     </div>
     <!-- .container -->
 
+    <!--Modal start-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">success</h4>
+                </div>
+                <div class="modal-body">Thank you for voting!</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <!--button type="button" class="btn btn-primary">Submit</button-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal end-->
+
     <script src="{% static 'js/templatemo-script.js' %}"></script>
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'js/jquery.raty.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script>
     $('.star').raty({
 	    half: false,
@@ -162,6 +182,8 @@
                    'success': function(json) {
                        if (json.code == 200) {
                         $($(this).attr('id')).raty('score', json.result);
+                        $('#myModal').modal('show');
+                        $('#myModal').modal('focus');
                        }
                    }
                });
@@ -175,5 +197,6 @@
                     text-decoration:none; 
                 } 
         </style>
+
 </body>
 </html>

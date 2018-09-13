@@ -35,5 +35,7 @@ urlpatterns = [
     path('team/',views.team),
     path('showstar/',views.starry),
     path('searchstar/',views.starry),
+    path('testd2/',views.d3),
+    path('testd3/',views.d3),
     #re_path(r'^',views.index),
 ]
