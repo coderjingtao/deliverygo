@@ -36,8 +36,8 @@
                 <li><a href="/index" class="smoothScroll">Home</a></li>
                 <!--li><a href="#about" class="smoothScroll">About</a></li-->
                 <li><a href="/cityrisk" class="smoothScroll">Risk Analysis</a></li>  
-                <li><a href="/rules" class="smoothScroll">Road Rules</a></li>
                 <li><a href="/block" class="smoothScroll">Road Closure</a></li>
+                <li><a href="/rules" class="smoothScroll">Road Rules</a></li>
                 <li><a href="/showstar" class="smoothScroll">Safety Vote</a></li>
         </ul>
     </div>
@@ -60,134 +60,151 @@
             <div class="row tm-section-mb">
                 <div class="col-lg-12">
                     <!-- one block -->
-					<div class=" tm-timeline-item">
-                        <div class="tm-timeline-item-inner">
-                            <img src="{% static 'images/helmet.png' %}" alt="Image" class="rounded-circle tm-img-timeline">
-                            <div class="tm-timeline-connector">
-                                <p class="mb-0">&nbsp;</p>
-                            </div>
-                            <div class="tm-timeline-description-wrap">
-                                <div class="tm-bg-dark tm-timeline-description">
-                                    <a href="/ruledetail/1"><h3 class="tm-text-green tm-font-400">Helmet</h3></a>
-                                    <p>All bike and scooter riders are required to wear a bike helmet in Victoria. Before starting your delivery work, you should know that ...</p>
-                                    <p class="tm-text-green float-right mb-0">New Rule. 31 July 2018</p>
+                    <div class=" tm-timeline-item">
+                            <div class="tm-timeline-item-inner">
+                                <a href="/ruledetail/1"><img src="{% static 'images/helmet.png' %}" alt="Image" class="rounded-circle tm-img-timeline"></a>
+                                <div class="tm-timeline-connector">
+                                    <p class="mb-0">&nbsp;</p>
+                                </div>
+                                <div class="tm-timeline-description-wrap">
+                                    <div class="tm-bg-dark tm-timeline-description">
+                                        <a href="/ruledetail/1"><h3 class="tm-text-green tm-font-400" style="color: #66D3D7">Helmet</h3></a>
+                                        <p>This page indicates that a rider of a bike must wear an approved bike helmet 
+                                            to protect on the head of rider. Unless a rider is exempt from wearing a bike helmet 
+                                            under another law of this jurisdiction in part 15 of road rules in Australia.
+                                            <a href="/ruledetail/1" style="color:#66D3D7;text-decoration: underline">Read More</a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
+                            <!--vertical line-->
+                            <div class="tm-timeline-connector-vertical"></div>
                         </div>
-						<!--vertical line-->
-                        <div class="tm-timeline-connector-vertical"></div>
-                    </div>
-					<!-- one block -->
-                    <div class="tm-timeline-item">
-                        <div class="tm-timeline-item-inner">
-                            <img src="{% static 'images/night.png' %}" alt="Image" class="rounded-circle tm-img-timeline">
-                            <div class="tm-timeline-connector">
-                                <p class="mb-0">&nbsp;</p>
-                            </div>
-                            <div class="tm-timeline-description-wrap">
-                                <div class="tm-bg-dark-light tm-timeline-description">
-                                    <a href="/ruledetail/2"><h3 class="tm-text-cyan tm-font-400">Riding at night</h3></a>
-                                    <p>If you are riding a bicycle at night you must abide by the following rules. Before starting your delivery work, you should know that ...</p>
-                                    <p class="tm-text-cyan float-right mb-0">New Rule. 21 July 2018</p>
+                        <!-- one block -->
+                        <div class="tm-timeline-item">
+                            <div class="tm-timeline-item-inner">
+                                <a href="/ruledetail/2"><img src="{% static 'images/night.png' %}" alt="Image" class="rounded-circle tm-img-timeline"></a></p>
+                                <div class="tm-timeline-connector">
+                                    <p class="mb-0">&nbsp;</p>
+                                </div>
+                                <div class="tm-timeline-description-wrap">
+                                    <div class="tm-bg-dark-light tm-timeline-description">
+                                        <a href="/ruledetail/2"><h3 class="tm-text-cyan tm-font-400" style="color: #66D3D7">Riding at night</h3></a>
+                                        <p>This page describes the detailed road rules of riding at night. 
+                                            Riding at night is really need to take extra care. Wearing bright colored clothing 
+                                            and reflective strips, use front and rear bike lights.
+                                            <a href="/ruledetail/2" style="color:#66D3D7;text-decoration: underline">Read More</a></p>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="tm-timeline-connector-vertical"></div>
                         </div>
-                        <div class="tm-timeline-connector-vertical"></div>
-                    </div>
-					<!-- one block -->
-                    <div class="tm-timeline-item">
-                        <div class="tm-timeline-item-inner">
-                            <img src="{% static 'images/rules2.png' %}" alt="Image" class="rounded-circle tm-img-timeline">
-                            <div class="tm-timeline-connector">
-                                <p class="mb-0">&nbsp;</p>
-                            </div>
-                            <div class="tm-timeline-description-wrap">
-                                <div class="tm-bg-dark tm-timeline-description">
-                                    <a href="/ruledetail/3"><h3 class="tm-text-yellow tm-font-400">Road rules</h3></a>
-                                    <p>Including Bicycle lanes, Riding with other riders,  Riding on the footpath. Before starting your delivery work, you should know that ...</p>
-                                    <p class="tm-text-yellow float-right mb-0">New Rule. 11 July 2018</p>
+                        <!-- one block -->
+                        <div class="tm-timeline-item">
+                            <div class="tm-timeline-item-inner">
+                                <a href="/ruledetail/3"><img src="{% static 'images/rules2.png' %}" alt="Image" class="rounded-circle tm-img-timeline"></a></p>
+                                <div class="tm-timeline-connector">
+                                    <p class="mb-0">&nbsp;</p>
+                                </div>
+                                <div class="tm-timeline-description-wrap">
+                                    <div class="tm-bg-dark tm-timeline-description">
+                                        <a href="/ruledetail/3"><h3 class="tm-text-yellow tm-font-400" style="color: #66D3D7">Bicycle road rules</h3></a>
+                                        <p>This page presents a summary of additional bicycle-specific road rules. 
+                                            Riders are not only obeying the same road rules as drivers but also need to obey 
+                                            additional bicycle-specific road rules such as bicycle lanes, riding with other riders, 
+                                            riding on the footpath.
+                                            <a href="/ruledetail/3" style="color:#66D3D7;text-decoration: underline">Read More</a></p>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="tm-timeline-connector-vertical"></div>
                         </div>
-                        <div class="tm-timeline-connector-vertical"></div>
-                    </div>
-					<!-- one block -->
-                    <div class="tm-timeline-item">
-                        <div class="tm-timeline-item-inner">
-                            <img src="{% static 'images/fine.png' %}" alt="Image" class="rounded-circle tm-img-timeline">
-                            <div class="tm-timeline-connector">
-                                <p class="mb-0">&nbsp;</p>
-                            </div>
-                            <div class="tm-timeline-description-wrap">
-                                <div class="tm-bg-dark-light tm-timeline-description">
-                                    <a href="/ruledetail/4"><h3 class="tm-text-orange tm-font-400">Fines</h3></a>
-                                    <p>Riders will pay fine if they are caught breaking the road rules. There's a table list about penaltiy amount. Before starting your delivery work, you should know that ...</p>
-                                    <p class="tm-text-orange float-right mb-0">New Rule. 01 July 2018</p>
+                        <!-- one block -->
+                        <div class="tm-timeline-item">
+                            <div class="tm-timeline-item-inner">
+                                <a href="/ruledetail/4"><img src="{% static 'images/fine.png' %}" alt="Image" class="rounded-circle tm-img-timeline"></a>
+                                <div class="tm-timeline-connector">
+                                    <p class="mb-0">&nbsp;</p>
+                                </div>
+                                <div class="tm-timeline-description-wrap">
+                                    <div class="tm-bg-dark-light tm-timeline-description">
+                                        <a href="/ruledetail/4"><h3 class="tm-text-orange tm-font-400" style="color: #66D3D7">Fines</h3></a>
+                                        <p>This page shows which types of road rules that riders are caught breaking need to pay fines 
+                                            and how much riders need to pay for each type.
+                                            <a href="/ruledetail/4" style="color:#66D3D7;text-decoration: underline">Read More</a></p>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="tm-timeline-connector-vertical"></div>
                         </div>
-						<div class="tm-timeline-connector-vertical"></div>
-                    </div>
-					<!-- one block -->
-                    <div class="tm-timeline-item">
-                        <div class="tm-timeline-item-inner">
-                            <img src="{% static 'images/assit.jpg' %}" alt="Image" class="rounded-circle tm-img-timeline">
-                            <div class="tm-timeline-connector">
-                                <p class="mb-0">&nbsp;</p>
-                            </div>
-                            <div class="tm-timeline-description-wrap">
-                                <div class="tm-bg-dark tm-timeline-description">
-                                    <a href="/ruledetail/5"><h3 class="tm-text-green tm-font-400">Power assisted bicycle</h3></a>
-                                    <p>Power assisted bicycles have two definitions in Victoria. Before starting your delivery work, you should know that ... </p>
-                                    <p class="tm-text-green float-right mb-0">New Rule. 21 June 2018</p>
+                        <!-- one block -->
+                        <div class="tm-timeline-item">
+                            <div class="tm-timeline-item-inner">
+                                <a href="/ruledetail/5"><img src="{% static 'images/assit.jpg' %}" alt="Image" class="rounded-circle tm-img-timeline"></a>
+                                <div class="tm-timeline-connector">
+                                    <p class="mb-0">&nbsp;</p>
+                                </div>
+                                <div class="tm-timeline-description-wrap">
+                                    <div class="tm-bg-dark tm-timeline-description">
+                                        <a href="/ruledetail/5"><h3 class="tm-text-green tm-font-400" style="color: #66D3D7">Power assisted bicycle</h3></a>
+                                        <p>Pedals are the main source of power for a power-assisted bicycle. A power-assisted bicycle is a pedal bicycle with an electric motor attached to help the rider. 
+                                            This page describes standard road rules of bikes apply to power-assisted bicycles.
+                                            <a href="/ruledetail/5" style="color:#66D3D7;text-decoration: underline">Read More</a></p>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="tm-timeline-connector-vertical"></div>
                         </div>
-						<div class="tm-timeline-connector-vertical"></div>
-                    </div>
-					<!-- one block -->
-                    <div class="tm-timeline-item">
-                        <div class="tm-timeline-item-inner">
-                            <img src="{% static 'images/tips.jpg' %}" alt="Image" class="rounded-circle tm-img-timeline">
-                            <div class="tm-timeline-connector">
-                                <p class="mb-0">&nbsp;</p>
-                            </div>
-                            <div class="tm-timeline-description-wrap">
-                                <div class="tm-bg-dark-light tm-timeline-description">
-                                    <a href="/ruledetail/6"><h3 class="tm-text-cyan tm-font-400">Safety tips</h3></a>
-                                    <p>Here are some safety tips about riding around Melbourne City. Before starting your delivery work, you should know that ... </p>
-                                    <p class="tm-text-cyan float-right mb-0">New Rule. 11 June 2018</p>
+                        <!-- one block -->
+                        <div class="tm-timeline-item">
+                            <div class="tm-timeline-item-inner">
+                                <a href="/ruledetail/6"><img src="{% static 'images/Tips.jpeg' %}" alt="Image" class="rounded-circle tm-img-timeline"></a>
+                                <div class="tm-timeline-connector">
+                                    <p class="mb-0">&nbsp;</p>
+                                </div>
+                                <div class="tm-timeline-description-wrap">
+                                    <div class="tm-bg-dark-light tm-timeline-description">
+                                        <a href="/ruledetail/6"><h3 class="tm-text-cyan tm-font-400" style="color: #66D3D7">Safety tips</h3></a>
+                                        <p>This page provides some safety tips to riders to guide them make good protection measures 
+                                            to avoid injuries and hurts
+                                            <a href="/ruledetail/6" style="color:#66D3D7;text-decoration: underline">Read More</a></p>
+                                    </div>
                                 </div>
                             </div>
+                            
                         </div>
-						
+                        <!-- one block end-->	
                     </div>
-					<!-- one block end-->	
                 </div>
-            </div>
-            <!--  horizontal line -->
-            <hr>
-			<div class="row">
-				<div class="row tm-section-mb tm-section-mt">
-					<div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
-						<h3 class="mt-2 mb-3 tm-text-gray">AI-based Traffic Warning</h3>
-						<p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum.</p>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
-						<h3 class="mt-2 mb-3 tm-text-gray">Restaurant Recommendation</h3>
-						<p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum.</p>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-12">
-						<h3 class="mt-2 mb-3 tm-text-gray">The Tip Analysis</h3>
-						<p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum.</p>
+            <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                        <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">T-Watch</h3>
+                        <ul style="margin-left:60px;list-style: none;">
+                            <li><p><a href="/team">Meet our team</a></p></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                        <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Social Media</h3>
+                        <ul style="margin-left:60px;list-style: none;">
+                            <li><a href="https://www.facebook.com/TWatch-1092036700954504/?modal=composer">Facebook</a></li>
+                            <li><a href="https://twitter.com/TWatch20">Twitter</a></li>
+                            <li><a href="https://www.instagram.com/t.watcht.watch/">Instagram</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Contact Us</h3>
+                        <ul style="margin-left:60px;list-style: none;">
+                            <li>T.WatchT.Watch@gmail.com</li>
+                            <li>900 Dandenong Rd,Caulfield East, VIC</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
         <hr>
         <!-- Footer -->
         <footer class="row mt-5 mb-5">
             <div class="col-lg-12">
                 <p class="text-center tm-text-gray tm-copyright-text mb-0">Copyright &copy;
-                    <span class="tm-current-year">2018</span> T-Watch Ltd.  | Designer: <a href="" class="tm-text-white">T-Watch Team</a> 
+                    <span class="tm-current-year">2018</span> T-Watch Ltd.  | Designer: T-Watch Team
                 </p>
             </div>
         </footer>
@@ -201,7 +218,6 @@
         a { color: #FFF; }
         a:hover { 
             color:#FFF; 
-            text-decoration:none; 
         } 
     </style>
 </body>

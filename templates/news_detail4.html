@@ -36,8 +36,8 @@
                 <li><a href="/index" class="smoothScroll">Home</a></li>
                 <!--li><a href="#about" class="smoothScroll">About</a></li-->
                 <li><a href="/cityrisk" class="smoothScroll">Risk Analysis</a></li>  
-                <li><a href="/rules" class="smoothScroll">Road Rules</a></li>
                 <li><a href="/block" class="smoothScroll">Road Closure</a></li>
+                <li><a href="/rules" class="smoothScroll">Road Rules</a></li>
                 <li><a href="/showstar" class="smoothScroll">Safety Vote</a></li>
         </ul>
     </div>
@@ -55,50 +55,65 @@
             <div class="row tm-section-mb">
                 <div class="col-lg-12">
                     <!-- one block -->
-					<div class=" tm-timeline-item">
-                        <div class="tm-timeline-item-inner2">
-                            <img src="{% static 'images/fine.png' %}" alt="Image" class="rounded-circle tm-img-timeline">
-                            <div class="tm-timeline-connector">
-                                <p class="mb-0">&nbsp;</p>
-                            </div>
-                            <div class="tm-timeline-description-wrap">
-                                <div class="tm-bg-dark tm-timeline-description">
-                                    <h1 class="tm-text-green tm-font-400">Fines</h1>
-                                    <p>Riders will pay fine if they are caught breaking the road rules. The following table lists the penalty amount of different legal offence description:</p>
-                                    <img src="{% static 'images/fines.png' %}" alt="Image" width="600" height="400">
-                                    <p>For more information, visit <a href="https://www.vicroads.vic.gov.au/safety-and-road-rules/road-rules/penalties/fines">fines and penalties </a> from VicRoads.</p>
-                                    <p class="tm-text-green float-right mb-0">New Event . 12 July 2018</p>
+                    <div class=" tm-timeline-item">
+                            <div class="tm-timeline-item-inner2">
+                                <img src="{% static 'images/fine.png' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                                <div class="tm-timeline-connector">
+                                    <p class="mb-0">&nbsp;</p>
+                                </div>
+                                <div class="tm-timeline-description-wrap">
+                                    <div class="tm-bg-dark tm-timeline-description">
+                                        <h4 class="tm-text-green tm-font-400">Breaking The Rules</h4>
+                                        <p>When you break a road rule you commit a traffic offence. Minor traffic offences, such as failing to give a hand signal when you have to, are often called traffic ‘infringements’. They will usually be dealt with by an on-the-spot fine.</p>
+                                        <img src="{% static 'images/Fine_Table.jpeg' %}" alt="Image" width="600" height="300">
+                                        <p>For more serious offences, such as riding dangerously, you could be convicted of a crime and go to prison.</p>
+                                        <h4 class="tm-text-green tm-font-400">Traffic Infringements</h4>
+                                        <p>If you commit a traffic infringement you will be given an ‘infringement notice’ by a police officer. The notice lists the road rule you broke, the amount of the on-the-spot fine, the due date for payment and how to pay.</p>
+                                        <h4 class="tm-text-green tm-font-400">Dealing With Fines</h4>
+                                        <p>When you get an on-the-spot fine for a traffic infringement you can usually pay it and avoid a court hearing and a possible criminal conviction. But if you decide not to pay the fine straight away, you can ask for it to be reviewed by the body that issued it or challenge it in court. If you’re going to court, get legal advice first.</p>
+                                        <h4 class="tm-text-green tm-font-400">More Serious Traffic Offences</h4>
+                                        <p>Just like a motorist, you can be charged with more serious traffic offences. If convicted of these offences you can get a large fine or even a prison term. Here are two examples.</p>
+                                        <h4 class="tm-text-green tm-font-400">Careless Riding</h4>
+                                        <p>You must not ride your bike carelessly on a road. For example, riding too fast for the conditions and not looking where you are going could amount to careless riding. If you are convicted of careless riding you could receive a substantial fine.</p>
+                                        <h4 class="tm-text-green tm-font-400">Dangerous Riding</h4>
+                                        <p>You must not risk public safety by riding your bike dangerously. For example, riding too fast for the conditions and not looking out for pedestrians could amount to dangerous riding. If you are convicted of dangerous riding, you could receive a large fine or even a prison term.</p>
+                                        <p>For more information, visit <a style="color:aqua;text-decoration: underline" href="https://www.vicroads.vic.gov.au/-/media/files/documents/safety-and-road-rules/feesfinespenalties/finestable20182019.ashx?la=en&hash=BA50679F8B56D0E20E42244AAAA0286C">fines and penalties </a> from VicRoads.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 					<!-- one block end-->	
                 </div>
             </div>
-            <!--  horizontal line -->
-            <hr>
-			<div class="row">
-				<div class="row tm-section-mb tm-section-mt">
-					<div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
-						<h3 class="mt-2 mb-3 tm-text-gray">AI-based Traffic Warning</h3>
-						<p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum.</p>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
-						<h3 class="mt-2 mb-3 tm-text-gray">Restaurant Recommendation</h3>
-						<p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum.</p>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-12">
-						<h3 class="mt-2 mb-3 tm-text-gray">The Tip Analysis</h3>
-						<p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum.</p>
+            <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                        <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">T-Watch</h3>
+                        <ul style="margin-left:60px;list-style: none;">
+                            <li><p><a href="/team">Meet our team</a></p></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                        <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Social Media</h3>
+                        <ul style="margin-left:60px;list-style: none;">
+                            <li><a href="https://www.facebook.com/TWatch-1092036700954504/?modal=composer">Facebook</a></li>
+                            <li><a href="https://twitter.com/TWatch20">Twitter</a></li>
+                            <li><a href="https://www.instagram.com/t.watcht.watch/">Instagram</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Contact Us</h3>
+                        <ul style="margin-left:60px;list-style: none;">
+                            <li>T.WatchT.Watch@gmail.com</li>
+                            <li>900 Dandenong Rd,Caulfield East, VIC</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
         <hr>
         <!-- Footer -->
         <footer class="row mt-5 mb-5">
             <div class="col-lg-12">
                 <p class="text-center tm-text-gray tm-copyright-text mb-0">Copyright &copy;
-                    <span class="tm-current-year">2018</span> T-Watch Ltd.  | Designer: <a href="" class="tm-text-white">T-Watch Team</a> 
+                    <span class="tm-current-year">2018</span> T-Watch Ltd.  | Designer: T-Watch Team
                 </p>
             </div>
         </footer>
@@ -112,7 +127,6 @@
             a { color: #FFF; }
             a:hover { 
                 color:#FFF; 
-                text-decoration:none; 
             } 
     </style>
 </body>

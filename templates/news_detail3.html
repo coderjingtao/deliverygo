@@ -36,8 +36,8 @@
                 <li><a href="/index" class="smoothScroll">Home</a></li>
                 <!--li><a href="#about" class="smoothScroll">About</a></li-->
                 <li><a href="/cityrisk" class="smoothScroll">Risk Analysis</a></li>  
-                <li><a href="/rules" class="smoothScroll">Road Rules</a></li>
                 <li><a href="/block" class="smoothScroll">Road Closure</a></li>
+                <li><a href="/rules" class="smoothScroll">Road Rules</a></li>
                 <li><a href="/showstar" class="smoothScroll">Safety Vote</a></li>
         </ul>
     </div>
@@ -57,62 +57,94 @@
                 <div class="col-lg-12">
                     <!-- one block -->
 					<div class=" tm-timeline-item">
-                        <div class="tm-timeline-item-inner2">
-                            <img src="{% static 'images/rules2.png' %}" alt="Image" class="rounded-circle tm-img-timeline">
-                            <div class="tm-timeline-connector">
-                                <p class="mb-0">&nbsp;</p>
-                            </div>
-                            <div class="tm-timeline-description-wrap">
-                                <div class="tm-bg-dark tm-timeline-description">
-                                    <h1 class="tm-text-green tm-font-400">Road rules</h1>
-                                    <ul style="padding-left:40px">
-                                        <li>Bicycle lanes</li>
-                                        <p>If there’s a bicycle lane on the road heading in the same direction as you, you must use this when riding a bike (unless it’s not practical to do so)</p>
-                                        <li>Riding with other riders</li>
+                            <div class="tm-timeline-item-inner2">
+                                <img src="{% static 'images/rules2.png' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                                <div class="tm-timeline-connector">
+                                    <p class="mb-0">&nbsp;</p>
+                                </div>
+                                <div class="tm-timeline-description-wrap">
+                                    <div class="tm-bg-dark tm-timeline-description">
+                                        <h4 class="tm-text-green tm-font-400" style="color: #66D3D7">Riding With Other Riders</h4>
                                         <p>A cyclist can ride next to another cyclist (this is called ‘riding two abreast’) on the road with the following rules:</p>
-                                        <ol>
+                                            <ul style="padding-left:40px">
                                             <li>On single-lane roads, cyclists can’t ride beside more than one other cyclist (unless overtaking).</li>
                                             <li>On multi-lane roads, cyclists:</li>
-                                            <li>can’t ride more than two abreast in any single marked lane (unless overtaking)</li>
-                                            <li>can ride more than two abreast across multiple lanes.</li>
-                                            <li>When travelling two abreast, cyclists shouldn’t be more than 1.5 metres apart.</li>
-                                          </ol>
-                                        <li>Riding on the footpath</li>
-                                        <p>Adults are allowed to ride on the footpath only if accompanying a bike rider under the age of 12, or if suffering a disability and carrying a relevant medical certificate or otherwise exempted. Bike riders must always give way to pedestrians on footpaths and shared paths.</p>
-                                    </ul>
-                                    <p>Visit <a href="https://www.vicroads.vic.gov.au/safety-and-road-rules/cyclist-safety/sharing-the-road">VicRoads</a> for more information.</p>
-                                    <p class="tm-text-green float-right mb-0">New Event . 12 July 2018</p>
+                                              <ul style="padding-left:40px">
+                                              <li>can’t ride more than two abreast in any single marked lane (unless overtaking)</li>
+                                              <li>can ride more than two abreast across multiple lanes.</li>
+                                              <li>when travelling two abreast, cyclists shouldn’t be more than 1.5 meters apart.</li>
+                                             </ul>
+                                            </ul>
+                                        </p>
+                                        <h4 class="tm-text-green tm-font-400" style="color: #66D3D7">Riding On A Footpath Or Shared Path</h4>
+                                        <h5 class="tm-text-green tm-font-400" style="color: #66D3D7">Shared Paths Definition:</h5>
+                                        <p>Shared paths are areas open to the public that are for both pedestrians and bike riders.</p>
+                                        <p>A shared path is identified by the image of a pedestrian and a bike on the pavement or on a post. You can ride on a footpath if you:</p>
+                                        <ul style="padding-left:40px">
+                                            <li>are a child under the age of 12.</li>
+                                            <li>are an adult supervising a child under the age of 12.</li>
+                                            <li>have been given and are following the conditions on a medical certificate that says you have a disability that makes it difficult for you to ride on the road. You need to follow the conditions on your medical certificate and show it to a police officer or authorized person when asked.</li>
+                                            <li>are an adult accompanying someone with a medical certificate cycling on a footpath.</li>
+                                        </ul>
+                                        <h5 class="tm-text-green tm-font-400" style="color: #66D3D7">When Riding On Footpaths And Shared Paths, Cyclists Need To:</h5>
+                                        <ul style="padding-left:40px">
+                                            <li>keep to the left on footpaths and shared paths (unless impractical to do so)</li>
+                                            <li>give way to all pedestrians. Pedestrians include people using wheelchairs, mobility scooters and wheeled recreational devices. Wheeled recreational devices include rollerblades, skates, skateboards and scooters</li>
+                                            <li>should use the bell on the bicycle or his or her voice to warn others when overtaking other path users a cyclist </li>
+                                        </ul>
+                                        <h4 class="tm-text-green tm-font-400" style="color: #66D3D7">Bike Riders In Bus Lanes:</h4>
+                                        <p>From 1 July 2017,cyclists can ride in a bus lane unless otherwise signed. The details are as following:</p>
+                                        <ul style="padding-left:40px">
+                                                <li>keep to the left of the bus lane</li>
+                                                <li>give way to buses at all times</li>
+                                                <li>wait behind the bus if it is coming to a stop and do not overtake or undertake it.</li>
+                                                <li>bike riders travelling in a bus lane can proceed on the 'B-signal' during bus lane operating hours. Outside the bus lane operating hours, only buses can proceed on the 'B-signal'.</li>
+                                                <li>be alert at bus stops and watch out for passengers getting on and off buses, stop behind the bus until it has moved off.</li>
+                                                <li>be alert to other road users entering the bus lane,  eg at an intersection or to turn off the road</li>
+                                                <li>before changing lanes and turning, always scan behind and signal your intentions to other road users.</li>
+                                                <li>if there is a bike lane beside the bus lane, a bike rider must use the bike lane. </li>
+                                                <li>using a hook turn can be a safer way to turn right.</li>
+                                                <li>take extra care when cycling at night. Wear bright or light colored clothing and reflective strips, use front and rear bike lights. </li>
+                                                <li>bright or light colored clothing and flashing lights during daylight can also improve safety</li>
+                                                <li>choosing a less busy parallel road or path where it exists may be a safer option.</li>
+                                        </ul>
+                                        <p>Visit <a style="color:aqua;text-decoration:underline" href="https://www.vicroads.vic.gov.au/safety-and-road-rules/cyclist-safety/sharing-the-road">VicRoads</a> for more information.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 					<!-- one block end-->	
                 </div>
             </div>
-            <!--  horizontal line -->
-            <hr>
-			<div class="row">
-				<div class="row tm-section-mb tm-section-mt">
-					<div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
-						<h3 class="mt-2 mb-3 tm-text-gray">AI-based Traffic Warning</h3>
-						<p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum.</p>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
-						<h3 class="mt-2 mb-3 tm-text-gray">Restaurant Recommendation</h3>
-						<p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum.</p>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-12">
-						<h3 class="mt-2 mb-3 tm-text-gray">The Tip Analysis</h3>
-						<p>Integer imperdiet aliquet lobortis. In in metus risus. Pellentesque pulvinar venenatis dui id rutrum.</p>
+            <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                        <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">T-Watch</h3>
+                        <ul style="margin-left:60px;list-style: none;">
+                            <li><p><a href="/team">Meet our team</a></p></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                        <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Social Media</h3>
+                        <ul style="margin-left:60px;list-style: none;">
+                            <li><a href="https://www.facebook.com/TWatch-1092036700954504/?modal=composer">Facebook</a></li>
+                            <li><a href="https://twitter.com/TWatch20">Twitter</a></li>
+                            <li><a href="https://www.instagram.com/t.watcht.watch/">Instagram</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Contact Us</h3>
+                        <ul style="margin-left:60px;list-style: none;">
+                            <li>T.WatchT.Watch@gmail.com</li>
+                            <li>900 Dandenong Rd,Caulfield East, VIC</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
         <hr>
         <!-- Footer -->
         <footer class="row mt-5 mb-5">
             <div class="col-lg-12">
                 <p class="text-center tm-text-gray tm-copyright-text mb-0">Copyright &copy;
-                    <span class="tm-current-year">2018</span> T-Watch Ltd.  | Designer: <a href="" class="tm-text-white">T-Watch Team</a> 
+                    <span class="tm-current-year">2018</span> T-Watch Ltd.  | Designer: T-Watch Team
                 </p>
             </div>
         </footer>
@@ -126,7 +158,6 @@
             a { color: #FFF; }
             a:hover { 
                 color:#FFF; 
-                text-decoration:none; 
             } 
     </style>
 </body>

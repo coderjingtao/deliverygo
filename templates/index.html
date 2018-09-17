@@ -40,7 +40,8 @@
 
 <body>
 <!--add by liu-->
-	<div class="navbar navbar-fixed-top custom-navbar" role="navigation">
+	<!--div class="navbar navbar-fixed-top custom-navbar" role="navigation"-->
+        <div class="navbar custom-navbar" role="navigation">
 		<div class="container">
 			<!-- NAVBAR HEADER -->
 			<div class="navbar-header">
@@ -55,18 +56,16 @@
 			</div>
 
           <!-- MENU LINKS -->
+
           <div class="navbar-header">
                <ul class="nav pull-right">
                     <li><a href="/index" class="smoothScroll">Home</a></li>
-                    <!--li><a href="#about" class="smoothScroll">About</a></li-->
                     <li><a href="/cityrisk" class="smoothScroll">Risk Analysis</a></li>  
-                    <li><a href="/rules" class="smoothScroll">Road Rules</a></li>
                     <li><a href="/block" class="smoothScroll">Road Closure</a></li>
+                    <li><a href="/rules" class="smoothScroll">Road Rules</a></li>
                     <li><a href="/showstar" class="smoothScroll">Safety Vote</a></li>
-                    <li><a href="/testd2" class="smoothScroll">D3</a></li>
                </ul>
           </div>
-		
 		</div>
 	</div> 
 <!--end by liu -->
@@ -84,8 +83,8 @@
                             <h1>
                                 <div id="rotate" class="tm-video-text">
                                     <div>Hello Riders!</div>
-                                    <div>Be Safe While You Ride</div>
-                                    <div>We Care For You!</div>
+                                    <div>Get All Road Information</div>
+                                    <div>Get All Traffic Information</div>
                                     <div>This is our promise.</div>
                                 </div>
                             </h1>
@@ -108,13 +107,13 @@
                     <!-- one block -->
 					<div class=" tm-timeline-item">
                         <div class="tm-timeline-item-inner">
-                            <img src="{% static 'images/rules.png' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                            <img src="{% static 'images/home_road.jpeg' %}" alt="Image" class="rounded-circle tm-img-timeline">
                             <div class="tm-timeline-connector">
                                 <p class="mb-0">&nbsp;</p>
                             </div>
                             <div class="tm-timeline-description-wrap">
                                 <div class="tm-bg-dark tm-timeline-description">
-                                    <a href="/rules"><h3 class="tm-text-green tm-font-400">Road Rules</h3></a>
+                                    <a href="/rules"><h3 class="tm-text-green tm-font-400" style="color: #66D3D7">Road Rules</h3></a>
                                     <p>A summary of important rules of the road according to different topics and information about the penalties that can enforce if you are violated these rules.</p>
                                     <!--p class="tm-text-green float-right mb-0">New Event . 12 July 2018</p-->
                                 </div>
@@ -126,13 +125,13 @@
 					<!-- one block -->
                     <div class="tm-timeline-item">
                         <div class="tm-timeline-item-inner">
-                            <img src="{% static 'images/map.png' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                            <img src="{% static 'images/home_risk.jpeg' %}" alt="Image" class="rounded-circle tm-img-timeline">
                             <div class="tm-timeline-connector">
                                 <p class="mb-0">&nbsp;</p>
                             </div>
                             <div class="tm-timeline-description-wrap">
                                 <div class="tm-bg-dark-light tm-timeline-description">
-                                    <a href="/cityrisk"><h3 class="tm-text-cyan tm-font-400">Regional Risk Analysiss</h3></a>
+                                    <a href="/cityrisk"><h3 class="tm-text-cyan tm-font-400" style="color: #66D3D7">Regional Risk Analysiss</h3></a>
                                     <p>This page provides a regional risk analysis to identify and analyze the potential problems that could affect riders to deliver food negatively. This regional risk analysis based on the hourly data of occurred accidents in Melbourne by different geographical zones.</p>
                                     <!--p class="tm-text-cyan float-right mb-0">Another Story . 9 July 2018</p-->
                                 </div>
@@ -150,7 +149,7 @@
                             </div>
                             <div class="tm-timeline-description-wrap">
                                 <div class="tm-bg-dark tm-timeline-description">
-                                    <a href="#" onclick='alert("Sorry, This Function has not completed!")'><h3 class="tm-text-yellow tm-font-400">Road Closure Information</h3></a>
+                                    <a href="/block"><h3 class="tm-text-yellow tm-font-400" style="color: #66D3D7">Road Closure Information</h3></a>
                                     <p>This page provides the information relating to road closures in Melbourne due to road damage, poor weather, fire, emergency works, flood, debris, a vehicle collision.</p>
                                     <!--p class="tm-text-yellow float-right mb-0">Latest News . 30 June 2018</p-->
                                 </div>
@@ -169,7 +168,7 @@
                             </div>
                             <div class="tm-timeline-description-wrap">
                                 <div class="tm-bg-dark-light tm-timeline-description">
-                                    <a href="#" onclick='alert("Sorry, This Function has not completed!")'><h3 class="tm-text-orange tm-font-400">Suburb Safety Star Ratings</h3></a>
+                                    <a href="/showstar"><h3 class="tm-text-orange tm-font-400" style="color: #66D3D7">Suburb Safety Star Ratings</h3></a>
                                     <p>This page provides the star rating features to indicate the level of safety that riders believe for the specific suburb. The more stars, the safer riders believe.</p>
                                     <!--p class="tm-text-orange float-right mb-0">New Project . 22 June 2018</p-->
                                 </div>
@@ -180,31 +179,31 @@
                 </div>
             </div>
             <!--  horizontal line -->
-            <hr>
 
-			<div class="row">
-				<div class="row tm-section-mb tm-section-mt">
-					<div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
-						<h3 class="mt-2 mb-3 tm-text-gray">Road Rules</h3>
-                        <p>Do not </p>
-                        <p>learn the traffic rule </p>
-                        <p>by an accident! Learn the rules Now!</p>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
-						<h3 class="mt-2 mb-3 tm-text-gray">Area Risk Analysis</h3>
-                        <p>Know your </p>
-                        <p>area well before</p>
-                        <p>you go out and ride!</p>
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-12">
-						<h3 class="mt-2 mb-3 tm-text-gray">Road Closure Information</h3>
-                        <p>Don't let </p>
-                        <p>the road closure </p>
-                        <p>affect your delivery</p>
-                        <p> time! Be Quick & Be Safe!</p>
-                    </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                    <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">T-Watch</h3>
+                    <ul style="margin-left:60px;list-style: none;">
+                        <li><p><a href="/team">Meet our team</a></p></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                    <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Social Media</h3>
+                    <ul style="margin-left:60px;list-style: none;">
+                        <li><a href="https://www.facebook.com/TWatch-1092036700954504/?modal=composer">Facebook</a></li>
+                        <li><a href="https://twitter.com/TWatch20">Twitter</a></li>
+                        <li><a href="https://www.instagram.com/t.watcht.watch/">Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Contact Us</h3>
+                    <ul style="margin-left:60px;list-style: none;">
+                        <li>T.WatchT.Watch@gmail.com</li>
+                        <li>900 Dandenong Rd,Caulfield East, VIC</li>
+                    </ul>
                 </div>
             </div>
+        <hr>
             <!--
             <div class="row tm-section-mt">
                 <div class="col-lg-6">
@@ -306,5 +305,11 @@
             };
         }
     </script>
+        <style>
+            a { color: #FFF; }
+            a:hover { 
+                color:#FFF; 
+            } 
+    </style>
 </body>
 </html>
