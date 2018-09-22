@@ -1,0 +1,12 @@
+[
+	{"street": "Lorimer Street", "num":70},
+	{"street": "Caravel Lane", "num":42},
+	{"street": "Bourke Street", "num":34},
+	{"street": "Newquay Promenade", "num":27},
+	{"street": "Waterview Walk", "num":24},
+	{"street": "Siddeley Street", "num":14},
+	{"street": "Rakaia Way", "num":14},
+	{"street": "Harbour Esplanade", "num":13},
+	{"street": "McCrae Street", "num":12},
+	{"street": "Victoria Harbour Promenade", "num":10}
+]

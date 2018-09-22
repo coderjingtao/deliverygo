@@ -2,6 +2,7 @@ from django.shortcuts import render
 from comment.models import City, Suburb, CityRisk
 from django.http import JsonResponse
 from django.core import serializers
+from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
@@ -31,20 +32,20 @@ def show_suburbs(request, id):
     suburbs = Suburb.objects.filter(city__id=id)
     return render(request,'suburb.html', {'suburb_list':suburbs})
 
-def make_comment(request, id):
-    ctx = {'code':200}
-    try:
-        suburb = Suburb.objects.get(pk=id)
-        if request.path.startswith('/good'):
-            suburb.good_count +=1
-            ctx['result'] = f'Good({suburb.good_count})'
-        else:
-            suburb.bad_count +=1
-            ctx['result'] = f'Bad({suburb.bad_count})'
-        suburb.save()
-    except suburb.DoesNotExist:
-        ctx['code'] = 404
-    return JsonResponse(ctx)
+# def make_comment(request, id):
+#     ctx = {'code':200}
+#     try:
+#         suburb = Suburb.objects.get(pk=id)
+#         if request.path.startswith('/good'):
+#             suburb.good_count +=1
+#             ctx['result'] = f'Good({suburb.good_count})'
+#         else:
+#             suburb.bad_count +=1
+#             ctx['result'] = f'Bad({suburb.bad_count})'
+#         suburb.save()
+#     except suburb.DoesNotExist:
+#         ctx['code'] = 404
+#     return JsonResponse(ctx)
 
 def roadblock(request):
     return render(request, 'road_block.html')
@@ -64,15 +65,30 @@ def safetyVote(request):
     return JsonResponse(ctx)
 
 def starry(request): # the most romantic method
-    if request.path.startswith('/showstar'):
-        suburbs = Suburb.objects.filter(city__id=1)
-        resp = { 'city_list': City.objects.all(), 'suburb_list':suburbs }
-    else:
-        suburb_name = request.POST.get('suburb') #根据表单的name属性，不是id
-        pcode = request.POST.get('postcode')
-        city_id = request.POST.get('city')
+    # if request.path.startswith('/showstar'):
+        #suburbs = Suburb.objects.filter(city__id=1)
+        # suburbs = Suburb.objects.all() 
+        # limit = 10
+        # paginator = Paginator(suburbs,limit)
+        # page = request.GET.get('page','1')  #默认从第一页开始
+        # result = paginator.page(page)
+        # resp = { 'city_list': City.objects.all(), 'suburb_list':result }
+
+    suburb_name = request.GET.get('suburb') #根据表单的name属性，不是id
+    pcode = request.GET.get('postcode')
+    city_id = request.GET.get('city')
+    if city_id is None and suburb_name is None and pcode is None:
+        suburbs = Suburb.objects.all() 
+    elif city_id is not None and city_id!='':
         suburbs = Suburb.objects.filter(city__id=city_id,name__icontains=suburb_name,postcode__contains=pcode) #大小写不敏感
-        resp = { 'city_list': City.objects.all(), 'suburb_list':suburbs }
+    else:
+        suburbs = Suburb.objects.filter(name__icontains=suburb_name,postcode__contains=pcode)
+        
+    limit = 10
+    paginator = Paginator(suburbs,limit)
+    page = request.GET.get('page','1')  #从页面中获得page参数，没有则默认从第一页开始
+    result = paginator.page(page)
+    resp = { 'city_list': City.objects.all(), 'suburb_list':result }
     return render(request,'vote.html', {'resp':resp} )
 
 def about(request):
@@ -81,10 +97,19 @@ def about(request):
 def team(request):
     return render(request, 'teaminfo.html')
 
-def d2(request):
-    return render(request, 'd3.html')
+def d3_bar(request):
+    return render(request, 'd3_barchart.html')
 
-def d3(request):
-    cities = CityRisk.objects.all()
-    cities_serilized =  serializers.serialize('json', cities)
-    return JsonResponse(cities_serilized,safe=False)
+def d3_bubble(request):
+    return render(request, 'd3_bubble.html')
+
+def weather(request):
+    return render(request, 'weather.html')
+
+# def d3(request):
+#     cities = CityRisk.objects.all()
+#     cities_serilized =  serializers.serialize('json', cities)
+#     return JsonResponse(cities_serilized,safe=False)
+
+def page_not_found(request):
+    return render(request,'404.html')

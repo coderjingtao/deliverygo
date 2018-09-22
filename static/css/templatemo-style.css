@@ -184,6 +184,12 @@ h3 {
     font-size: 2.2rem;
 }
 
+.tm-page-title {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+}
+
 .tm-font-400 {
     font-weight: 400;
 }

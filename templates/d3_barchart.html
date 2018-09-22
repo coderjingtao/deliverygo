@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+        {% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>D3 parse json to barchart</title>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+ 
+    <style>
+    .bar{
+        fill: steelblue;
+    }
+
+    .bar:hover{
+        fill: brown;
+    }
+
+	.axis {
+	  font: 10px sans-serif;
+	}
+
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p id="areaNameDiv"></p>
+        <div class="container tm-container-2">
+            <div class="row">
+                <div class="form-group col-xl-6">
+                        <select id="area" onchange="changeArea()">
+                                <option value="carlton" selected>carlton</option>
+                                <option value="docland">docland</option>
+                        </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    // 定义SVG画布大小
+    var padding = {top: 50, right: 20, bottom: 100, left: 100}; 
+    var width = 600-padding.left-padding.right;    // SVG的宽度
+    var height = 600-padding.top-padding.bottom;   // SVG的长度
+
+    var x = d3.scale.ordinal().rangeRoundBands([0, width], .05); //设置x轴范围
+    var y = d3.scale.linear().range([height, 0]); //设置y轴范围
+
+    // 定义坐标轴
+    var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left")
+            .ticks(10);
+
+    // 在html的body中添加SVG
+    var svg = d3.select("body")
+                .append('svg')  
+                .attr('width', width+padding.left+padding.right)
+                .attr('height', height+padding.top+padding.bottom)
+                .append("g")
+                .attr("transform","translate("+padding.left+","+padding.top+")");
+
+    var index=document.getElementById('area').selectedIndex;
+    var text = document.getElementById('area').options[index].text;
+    document.getElementById("areaNameDiv").innerHTML = text+" data";
+
+    //从json中加载自己的数据
+    d3.json("../../static/csv/"+text+".json", function(error, mydata) {
+        
+        mydata.forEach(function(d) {
+            d.street = d.street;
+            d.num = +d.num;
+        });
+
+        //设置x和y轴比例尺
+        x.domain(mydata.map(function(d) {return d.street;}));
+        y.domain([0,d3.max(mydata,function(d) {return d.num;})]);
+
+        //添加坐标轴
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", "-.55em")
+            .attr("transform", "rotate(-90)" );
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 5)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .text("Apartment Number");
+
+        //添加柱状图
+        svg.selectAll("bar")
+            .data(mydata)
+            .enter()
+            .append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d) { return x(d.street); })
+            .attr("width", x.rangeBand())
+            .attr("y", function(d) { return y(d.num); })
+            .attr("height", function(d) { return height - y(d.num); });   
+        //设置bar的文字
+        var text = svg.selectAll(text)
+            .data(mydata) 
+            .enter()
+            .append("text")
+            .attr("fill","white")
+            .attr("font-size","14px")
+            .attr("text-anchor","middle")
+            .attr("x", function(d) { return x(d.street); })
+            .attr("y", function(d) { return y(d.num); })
+            .attr('dx', x.rangeBand()/2)   //x轴相对平移距离
+            .attr('dy', "1em")  //em单位表示的是当前文字所占一行的高度
+            .text(function(d) {return d.num;});
+    });
+
+
+    function changeArea(){
+        var index=document.getElementById('area').selectedIndex;
+        var text = document.getElementById('area').options[index].text;
+        document.getElementById("areaNameDiv").innerHTML = text+" data";
+
+        d3.select("svg").remove();
+
+    // 定义SVG画布大小
+    var padding = {top: 50, right: 20, bottom: 100, left: 100}; 
+    var width = 600-padding.left-padding.right;    // SVG的宽度
+    var height = 600-padding.top-padding.bottom;   // SVG的长度
+
+    var x = d3.scale.ordinal().rangeRoundBands([0, width], .05); //设置x轴范围
+    var y = d3.scale.linear().range([height, 0]); //设置y轴范围
+
+    // 定义坐标轴
+    var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left")
+            .ticks(10);
+
+    // 在html的body中添加SVG
+    var svg = d3.select("body")
+                .append('svg')  
+                .attr('width', width+padding.left+padding.right)
+                .attr('height', height+padding.top+padding.bottom)
+                .append("g")
+                .attr("transform","translate("+padding.left+","+padding.top+")");    
+    //从json中加载自己的数据
+    d3.json("../../static/csv/"+text+".json", function(error, mydata) {
+        
+        mydata.forEach(function(d) {
+            d.street = d.street;
+            d.num = +d.num;
+        });
+
+        //设置x和y轴比例尺
+        x.domain(mydata.map(function(d) {return d.street;}));
+        y.domain([0,d3.max(mydata,function(d) {return d.num;})]);
+
+        //添加坐标轴
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", "-.55em")
+            .attr("transform", "rotate(-90)" );
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 5)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .text("Apartment Number");
+
+        //添加柱状图
+        svg.selectAll("bar")
+            .data(mydata)
+            .enter()
+            .append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d) { return x(d.street); })
+            .attr("width", x.rangeBand())
+            .attr("y", function(d) { return y(d.num); })
+            .attr("height", function(d) { return height - y(d.num); });   
+        //设置bar的文字
+        var text = svg.selectAll(text)
+            .data(mydata) 
+            .enter()
+            .append("text")
+            .attr("fill","white")
+            .attr("font-size","14px")
+            .attr("text-anchor","middle")
+            .attr("x", function(d) { return x(d.street); })
+            .attr("y", function(d) { return y(d.num); })
+            .attr('dx', x.rangeBand()/2)   //x轴相对平移距离
+            .attr('dy', "1em")  //em单位表示的是当前文字所占一行的高度
+            .text(function(d) {return d.num;});
+    });
+
+    }
+</script>

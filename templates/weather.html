@@ -30,6 +30,7 @@
            <a href="/index" class="tm-text-white"><h1 class="pl-4 tm-site-title">DeliveryGo</h1></a>
         </div>
 
+      <!-- MENU LINKS -->
     <!-- MENU LINKS -->
     <div class="navbar-header">
         <ul class="nav pull-right">
@@ -48,35 +49,39 @@
         <div class="container tm-container-2">
             <div class="row">
                 <div class="col-lg-12">
-                        <div class="row"><p class="smoothScroll"><a href="/index">Home</a> > <a href="/rules">Road Rules</a> > <a href="">Riding at night</a></p></div>  
-                    <h2 class="tm-page-title">Regulation Information</h2>
+                    <div class="row"><p class="smoothScroll"><a href="/index">Home</a> > <a href="">Weather</a></p></div>  
+                    <h2 class="tm-page-title">Weather</h2>
                 </div>
+            </div> 
+            <!--weather widget start-->
+            <!--
+            <div class="tm-timeline-item-inner">
+            <a href="https://www.accuweather.com/en/au/melbourne/26216/biking-current-weather/26216" class="aw-widget-legal"></a>
+            <div id="awtd1537427367514" class="aw-widget-36hour"  data-locationkey="" data-unit="c" data-language="en-us" data-useip="true" data-uid="awtd1537427367514" data-editlocation="true" data-lifestyle="biking"></div>
+            <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
             </div>
-            <div class="row tm-section-mb">
-                <div class="col-lg-12">
-                    <!-- one block -->
-					<div class=" tm-timeline-item">
-                            <div class="tm-timeline-item-inner2">
-                                <img src="{% static 'images/night.png' %}" alt="Image" class="rounded-circle tm-img-timeline">
-                                <div class="tm-timeline-connector">
-                                    <p class="mb-0">&nbsp;</p>
-                                </div>
-                                <div class="tm-timeline-description-wrap">
-                                    <div class="tm-bg-dark tm-timeline-description">
-                                        <p style="color:#66D3D7;font-size:160%">If you are riding a bicycle at night you must have:</p>
-                                            <p>1.White light (flashing or steady) on the front </p>
-                                            <p>2.Red light (flashing or steady) on the back </p>
-                                            <p>3.A red reflector on the back</p>
-                                        <p style="color:#66D3D7;font-size:160%">Note:</p>
-                                            <p>Both front light and rear red light should be visible from at least 200 metres and the red rear reflector visible from at least 50 metres</p>
-                                        <iframe width="600" height="400" src="https://www.youtube.com/embed/a60UqyoX04w" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                            </div>
+            -->
+            <!--weather widget end-->
+
+            <!--weather widget start-->
+            <div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <iframe src="https://www.meteoblue.com/en/weather/widget/three?geoloc=detect&nocurrent=0&noforecast=0&days=7&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=image"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style="width: 100%;height: 630px"></iframe><!--805px,630px-->
                         </div>
-					<!-- one block end-->	
-                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6" style="background-color:#10161c">
+                            <iframe src="https://www.meteoblue.com/en/weather/widget/daily?geoloc=detect&days=7&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&precipunit=MILLIMETER&coloured=coloured&pictoicon=0&pictoicon=1&maxtemperature=0&maxtemperature=1&mintemperature=0&mintemperature=1&windspeed=0&windspeed=1&windgust=0&winddirection=0&winddirection=1&uv=0&uv=1&humidity=0&precipitation=0&precipitation=1&precipitationprobability=0&precipitationprobability=1&spot=0&spot=1&pressure=0&pressure=1&layout=dark"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style="width: 100%;height: 735px"></iframe><!--413-->
+                        </div>
+                        <div class="col-lg-6">
+                            <iframe src="https://www.meteoblue.com/en/weather/widget/seeing?geoloc=detect&noground=0"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style="width: 100%;height: 738px"></iframe>
+                        </div>
+                    </div>
             </div>
+            <!--weather widget end-->
+            <br>
+            <br>
             <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
                         <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">T-Watch</h3>
@@ -100,15 +105,16 @@
                         </ul>
                     </div>
                 </div>
-        <hr>
-        <!-- Footer -->
-        <footer class="row mt-5 mb-5">
-            <div class="col-lg-12">
-                <p class="text-center tm-text-gray tm-copyright-text mb-0">Copyright &copy;
-                    <span class="tm-current-year">2018</span> T-Watch Ltd.  | Designer: T-Watch Team
-                </p>
-            </div>
-        </footer>
+                <hr>
+                <!-- Footer -->
+                <footer class="row mt-5 mb-5">
+                    <div class="col-lg-12">
+                        <p class="text-center tm-text-gray tm-copyright-text mb-0">Copyright &copy;
+                            <span class="tm-current-year">2018</span> T-Watch Ltd.  | Designer: T-Watch Team
+                        </p>
+                    </div>
+                </footer>
+    
     </div>
     <!-- .container -->
 
@@ -121,5 +127,7 @@
                 color:#FFF; 
             } 
     </style>
+
+        
 </body>
 </html>

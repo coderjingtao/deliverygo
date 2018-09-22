@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="{% static 'css/jquery.ui.css' %}">
     <!-- Main CSS -->
     <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}"> 
-    <link rel="stylesheet" href="{% static 'css/jquery.ui.css' %}"/>
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 </head>
 
@@ -38,11 +37,11 @@
     <div class="navbar-header">
         <ul class="nav pull-right">
                 <li><a href="/index" class="smoothScroll">Home</a></li>
-                <!--li><a href="#about" class="smoothScroll">About</a></li-->
                 <li><a href="/cityrisk" class="smoothScroll">Risk Analysis</a></li>  
                 <li><a href="/block" class="smoothScroll">Road Closure</a></li>
                 <li><a href="/rules" class="smoothScroll">Road Rules</a></li>
                 <li><a href="/showstar" class="smoothScroll">Safety Vote</a></li>
+                <li><a href="/weather" class="smoothScroll">Weather</a></li>
         </ul>
     </div>
     </div>
@@ -53,13 +52,13 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row"><p class="smoothScroll"><a href="/index">Home</a> > <a href="">Safety Vote</a></p></div>  
-                    <h2 class="tm-welcome-text">Star the area & share your experience.</h2>
+                    <h2 class="tm-page-title">Star the area & share your experience.</h2>
                 </div>
             </div>
             <div class="row tm-section-mb">
                 <!--search bar -->
                 <div class="col-lg-12 mb-5">
-                    <form action="/searchstar/" method="POST">{% csrf_token %}
+                    <form action="/showstar" method="GET">
                     <div class="row">
                         <div class="form-group col-xl-4">
                             <input type="text" id="suburb" name="suburb" class="form-control" placeholder="Search Suburb..."/>
@@ -69,6 +68,7 @@
                         </div>
 						<div class="form-group col-xl-3">
                             <select id="city" name="city" class="select">
+                                    <option value="" selected>ALL Cities</option>
                                 {% for city in resp.city_list %}
                                     <option value="{{ city.id }}">{{ city.name }}</option>
                                 {% endfor %}
@@ -105,8 +105,45 @@
                     </tbody>
                 </table>
                 {% else %}
-                <div style="text-align:center"><p>Oops! No suburbs in this result.</p></div>
+                <div style="text-align:center"><p>Oops! There is no relevant data in this result.</p></div>
                 {% endif %}
+                <!--分页开始-->
+                {% if '/showstar/' == request.get_full_path %}
+                <div>
+                    <ul class="pagination pagination-large" style="text-align:center">
+                    <li><a href="/showstar/?page=1">&laquo; First</a>&nbsp;&nbsp;</li>
+                    {% if resp.suburb_list.has_previous %}
+                    <li><a href="/showstar/?page={{ resp.suburb_list.previous_page_number }}">&larr; Previous</a>&nbsp;&nbsp;</li>
+                    {% endif %}
+        
+                         <!-- {% for num in resp.suburb_list.paginator.page_range %}
+                            <li><a href="/showstar/?page={{ num }}">{{ num }}</a></li>
+                         {% endfor %} -->
+        
+                    {% if resp.suburb_list.has_next %}
+                    <li><a href="/showstar/?page={{ resp.suburb_list.next_page_number }}">Next &rarr;</a>&nbsp;&nbsp;</li>
+                    {% endif %}
+                    <li><a href="/showstar/?page={{ resp.suburb_list.paginator.num_pages }}">Last &raquo;</a></li>
+                    </ul>
+                    <span style="color: #8c8c8c"> Result: {{ resp.suburb_list.paginator.count }} Suburbs, Total: {{ resp.suburb_list.paginator.num_pages }} Pages</span>
+                </div>
+                {% else %}
+                <div>
+                    <ul class="pagination pagination-large" style="text-align:center">
+                    <li><a href="{{ request.get_full_path }}&page=1">&laquo; First</a>&nbsp;&nbsp;</li>
+                    {% if resp.suburb_list.has_previous %}
+                    <li><a href="{{ request.get_full_path }}&page={{ resp.suburb_list.previous_page_number }}">&larr; Previous</a>&nbsp;&nbsp;</li>
+                    {% endif %}
+        
+                    {% if resp.suburb_list.has_next %}
+                    <li class="next"><a href="{{ request.get_full_path }}&page={{ resp.suburb_list.next_page_number }}">Next &rarr;</a>&nbsp;&nbsp;</li>
+                    {% endif %}
+                    <li ><a href="{{ request.get_full_path }}&page={{ resp.suburb_list.paginator.num_pages }}">Last &raquo;</a></li>
+                    </ul>
+                    <span style="color: #8c8c8c"> Result: {{ resp.suburb_list.paginator.count }} Suburbs, Total: {{ resp.suburb_list.paginator.num_pages }} Pages</span>
+                </div>
+                {% endif %}
+                <!--分页结束-->
         </div>
             <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">

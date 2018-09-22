@@ -29,13 +29,16 @@ urlpatterns = [
     path('cityall',views.show_allcity),
     path('city/<int:id>',views.show_suburbs),
     path('vote/',views.safetyVote),
-    path('good/<int:id>',views.make_comment),
-    path('bad/<int:id>',views.make_comment),
+    # path('good/<int:id>',views.make_comment),
+    # path('bad/<int:id>',views.make_comment),
     path('about/',views.about),
     path('team/',views.team),
     path('showstar/',views.starry),
-    path('searchstar/',views.starry),
-    path('testd2/',views.d3),
-    path('testd3/',views.d3),
+    # path('searchstar/',views.starry),
+    path('d3_bar/',views.d3_bar),
+    path('d3_bubble/',views.d3_bubble),
+    path('weather/',views.weather),
     #re_path(r'^',views.index),
 ]
+
+hander404 = 'comment.views.page_not_found'

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+        {% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>D3 parse json to barchart</title>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <style>
+         
+            .container {
+                margin: 30px auto;
+                width: 1000px;
+                height: 600px;
+                border: 1px solid #000;
+            }
+            .axis path,
+            .axis line {
+                stroke: #000;
+                fill: none;
+            }
+            .bubble {
+                fill: #2ec7c9;
+                fill-opacity: 0.5;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-lg-6">
+            <p id="areaNameDiv"></p>
+        </div>
+        <div class="col-lg-6">
+                <select id="area" onchange="changeArea()">
+                    <option value="carlton" selected>carlton</option>
+                    <option value="docland">docland</option>
+                </select>
+            </div>
+    </div>
+    <div class="container"> 
+        <svg width="100%" height="100%"></svg>
+    </div>
+</body>
+</html>
+
+<script>
+    
+    var index=document.getElementById('area').selectedIndex;
+    var text = document.getElementById('area').options[index].text;
+    document.getElementById("areaNameDiv").innerHTML = text+" data";
+
+    d3.json("../../static/csv/"+text+".json", function(error, mydata) {
+
+    mydata.forEach(function(d) {
+        d.street = d.street;
+        d.num = +d.num;
+        d.x =randomNum(0,1000);
+        d.y =randomNum(0,600);
+    });
+
+    var width = 1000, height = 600;
+    // SVG画布边缘与图表内容的距离
+    var padding = { top: 50, right: 50, bottom: 50, left: 50 };
+    // 创建一个分组用来组合要画的图表元素
+    var main = d3.select('.container svg').append('g')
+                .classed('main', true)
+                .attr('transform', "translate(" + padding.top + ',' + padding.left + ')');
+
+    // 添加x轴和y轴
+    var xScale = d3.scale.linear()
+                        .domain([0, 1000])
+                        .range([0, width - padding.left - padding.right]);
+    var yScale = d3.scale.linear()
+                        .domain([0, 600])
+                        .range([height - padding.top - padding.bottom, 0]);
+    var xAxis = d3.svg.axis()
+                        .scale(xScale)
+                        .orient('bottom');
+    var yAxis = d3.svg.axis()
+                        .scale(yScale)
+                        .orient('left');
+
+    main.append('g')
+        .attr('class', 'axis')
+        .attr('transform', 'translate(0,' + (height - padding.top - padding.bottom) + ')')
+        .call(xAxis);
+    main.append('g')
+        .attr('class', 'axis')
+        .call(yAxis);
+    // 添加气泡
+    main.selectAll('.bubble')
+        .data(mydata)
+        .enter()
+        .append('circle')
+        .attr('class', 'bubble')
+        .attr('cx', function(d) {
+            return xScale(d.x);
+            })
+        .attr('cy', function(d) {
+            return yScale(d.y);
+            })
+        .attr('r', function(d) {
+            return d.num/3;
+        });
+
+    // var text = main.selectAll(text)
+    //     .data(mydata) 
+    //     .enter()
+    //     .append("text")
+    //     .attr("fill","black")
+    //     .attr("font-size","14px")
+    //     .style("text-anchor", "middle")
+    //     .attr("x",function(d){ return d.x; })
+    //     .attr("y",function(d){ return d.y; })
+    //     .text(function(d) { return d.street; });
+});
+
+//生成从minNum到maxNum的随机数
+function randomNum(minNum,maxNum){ 
+    switch(arguments.length){ 
+        case 1: 
+            return parseInt(Math.random()*minNum+1,10); 
+        break; 
+        case 2: 
+            return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
+        break; 
+            default: 
+                return 0; 
+            break; 
+    }
+} 
+
+function changeArea(){
+    var index=document.getElementById('area').selectedIndex;
+    var text = document.getElementById('area').options[index].text;
+    document.getElementById("areaNameDiv").innerHTML = text+" data";
+    d3.selectAll(".bubble").remove();//删除原来生成的图形
+    d3.selectAll("text").remove();
+
+    d3.json("../../static/csv/"+text+".json", function(error, mydata) {
+
+    mydata.forEach(function(d) {
+        d.street = d.street;
+        d.num = +d.num;
+        d.x =randomNum(0,1000);
+        d.y =randomNum(0,600);
+    });
+
+    var width = 1000, height = 600;
+    // SVG画布边缘与图表内容的距离
+    var padding = { top: 50, right: 50, bottom: 50, left: 50 };
+    // 创建一个分组用来组合要画的图表元素
+    var main = d3.select('.container svg').append('g')
+            .classed('main', true)
+            .attr('transform', "translate(" + padding.top + ',' + padding.left + ')');
+    // 添加x轴和y轴
+    var xScale = d3.scale.linear()
+                    .domain([0, 1000])
+                    .range([0, width - padding.left - padding.right]);
+    var yScale = d3.scale.linear()
+                    .domain([0, 600])
+                    .range([height - padding.top - padding.bottom, 0]);
+    var xAxis = d3.svg.axis()
+                    .scale(xScale)
+                    .orient('bottom');
+    var yAxis = d3.svg.axis()
+                    .scale(yScale)
+                    .orient('left');
+
+    main.append('g')
+        .attr('class', 'axis')
+        .attr('transform', 'translate(0,' + (height - padding.top - padding.bottom) + ')')
+        .call(xAxis);
+    main.append('g')
+        .attr('class', 'axis')
+        .call(yAxis);
+    // 添加气泡
+    main.selectAll('.bubble')
+        .data(mydata)
+        .enter()
+        .append('circle')
+        .attr('class', 'bubble')
+        .attr('cx', function(d) {
+            return xScale(d.x);
+        })
+        .attr('cy', function(d) {
+            return yScale(d.y);
+        })
+        .attr('r', function(d) {
+            return d.num/3;
+        });
+    });
+
+}
+</script>
