@@ -123,7 +123,6 @@
                         icon: '../static/images/rider2.png'
                     });
 
-
                 } else {
                     alert('Geocode was not successful for the following reason: ' + status);
                 }
@@ -461,19 +460,19 @@ function addEventInfoWindow(marker,roadname,lrs_start_locality,lrs_end_locality,
         <div class="row tm-section-mb">
             <div class="col-lg-12 mb-5">
                 <div class="row">
-                    <div class="form-group col-xl-4">
-                        <input type="text" id="localtion" name="location" class="form-control" placeholder="Search Location..."
+                    <div class="form-group col-xl-6">
+                        <input type="text" id="localtion" name="location" class="form-control" placeholder="Input council, suburb, postcode, roadname, restaurant..."
                             required />
                     </div>
-                    <div class="form-group col-xl-4">
+                    <div class="form-group col-xl-3">
                         <select id="mode" onchange="changeType();" class="select">
                             <option value="all_point" selected>All Points</option>
                             <option value="erc_point">Emergency Road Closure Points</option>
                             <option value="rwe_point">Roadworks and Events Points</option>
                         </select>
                     </div>
-                    <div class="form-group col-xl-4">
-                        <button type="submit" class="btn tm-btn-send  pull-right" onclick="codeAddress()">Search It</button>
+                    <div class="form-group col-xl-3">
+                        &nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn tm-btn-send  pull-right" onclick="codeAddress()">Search It</button>
                     </div>
                 </div>
             </div>
