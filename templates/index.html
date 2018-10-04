@@ -35,6 +35,29 @@
             margin: 0 auto;
             display: none;
         }
+        
+        /* added by Chris */
+        .imcenterded {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        .usercontainer {
+            position: relative;
+            text-align: center;
+            color: white;
+            font-size: 3.8rem;
+        } 
+
+        .usercentered {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+        }
+
     </style>
 </head>
 
@@ -60,14 +83,16 @@
           <div class="navbar-header">
                <ul class="nav pull-right">
                     <li><a href="/index" class="smoothScroll">Home</a></li>
+                    <li><a href="/learnmore" class="smoothScroll">About Us</a></li>
                     <li><a href="/cityrisk" class="smoothScroll">Risk Analysis</a></li>  
                     <li><a href="/block" class="smoothScroll">Road Closure</a></li>
-                    <li><a href="/rules" class="smoothScroll">Road Rules</a></li>
-                    <li><a href="/showstar" class="smoothScroll">Safety Vote</a></li>
                     <li><a href="/weather" class="smoothScroll">Weather</a></li>
+                    <li><a href="/game" class="smoothScroll">Game</a></li>
+                    <!--li><a href="/rules" class="smoothScroll">Road Rules</a></li-->
+                    <!--li><a href="/showstar" class="smoothScroll">Safety Vote</a></li-->
                     <!--li><a href="/d3_bar" class="smoothScroll">D3_barchart</a></li-->
                     <!--li><a href="/d3_bubble" class="smoothScroll">D3_bubble</a></li-->
-                    
+                    <!--li><a href="/learnmore" class="smoothScroll">Legal Help</a></li-->
                </ul>
           </div>
 		</div>
@@ -83,13 +108,15 @@
                         <source src="{% static 'videos/nologo.mp4' %}" type="video/mp4"> Your browser does not support the video tag.
                     </video>
                     <div id="tm-video-loader"></div>
-                        <div id="tm-video-text-overlay" class="tm-video-text-overlay d-none">
+                        <div id="tm-video-text-overlay" class="tm-video-text-overlay d-none" style="
+                        text-align: center;
+                        width: 100%;">
                             <h1>
-                                <div id="rotate" class="tm-video-text">
-                                    <div>Hello Riders!</div>
-                                    <div>Get All Road Information</div>
-                                    <div>Get All Traffic Information</div>
-                                    <div>This is our promise.</div>
+                                <div id="rotate">
+                                    <div>New to Australia?</div>
+                                    <div>Looking to be a delivery rider?</div>
+                                    <div>Start here!!</div>
+                                    <div>Scroll down for more information!</div>
                                 </div>
                             </h1>
                         </div>
@@ -97,16 +124,44 @@
                 </div>
             </div>
         </div>
-
-        <div class="container tm-container-2">
-            
-			<div class="row">
+        <div class="container tm-container-2">   
+            <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="tm-welcome-text">What can we do for you?</h2>
+                    <!-- changed by Chris-->
+                    <h1 class="tm-welcome-text" style="text-align: center">A Quick Fact</h1>
                 </div>
             </div>
+        </div>
+         <!-- Added by Chris-->
+         <div class="row">
+        <div class="imcenterded">
+                <div class="usercontainer">
+                <img src="{% static 'images/journey1.jpeg' %}" alt="Image">
+                <div class="usercentered">
+                    <h1>
+                        <div class="css-typing">
+                            <p>There are 15,000 food delivery riders in Melbourne.</p>
+                            <p>Many are international students.</p>
+                            <p>46.5% of them have been hurt while working.</p>
+                                <p>
+                                <a href="/learnmore">
+                                Click here to learn more! </a></p>
+                        </div>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+        <div class="container tm-container-2">   
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- changed by Chris-->
+                    <h1 class="tm-welcome-text" style="text-align: center">Our Services</h1>
+                </div>
+            </div> 
 
-            <div class="row tm-section-mb">
+        <div class="row tm-section-mb">
                 <div class="col-lg-12">
                     <!-- one block -->
 					<div class=" tm-timeline-item">
@@ -118,7 +173,7 @@
                             <div class="tm-timeline-description-wrap">
                                 <div class="tm-bg-dark tm-timeline-description">
                                     <a href="/rules"><h3 class="tm-text-green tm-font-400" style="color: #66D3D7">Road Rules</h3></a>
-                                    <p>A summary of important rules of the road according to different topics and information about the penalties that can enforce if you are violated these rules.</p>
+                                    <p>A succinct summary of important rules and regulations laid down by the Victorian government for bike riders.</p>
                                     <!--p class="tm-text-green float-right mb-0">New Event . 12 July 2018</p-->
                                 </div>
                             </div>
@@ -136,7 +191,7 @@
                             <div class="tm-timeline-description-wrap">
                                 <div class="tm-bg-dark-light tm-timeline-description">
                                     <a href="/cityrisk"><h3 class="tm-text-cyan tm-font-400" style="color: #66D3D7">Regional Risk Analysiss</h3></a>
-                                    <p>This page provides a regional risk analysis to identify and analyze the potential problems that could affect riders to deliver food negatively. This regional risk analysis based on the hourly data of occurred accidents in Melbourne by different geographical zones.</p>
+                                    <p>A graphical analysis of the crashes in Melbourne. This would help riders to understand their delivery area much better.</p>
                                     <!--p class="tm-text-cyan float-right mb-0">Another Story . 9 July 2018</p-->
                                 </div>
                             </div>
@@ -156,6 +211,41 @@
                                     <a href="/block"><h3 class="tm-text-yellow tm-font-400" style="color: #66D3D7">Road Closure Information</h3></a>
                                     <p>This page provides the information relating to road closures in Melbourne due to road damage, poor weather, fire, emergency works, flood, debris, a vehicle collision.</p>
                                     <!--p class="tm-text-yellow float-right mb-0">Latest News . 30 June 2018</p-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tm-timeline-connector-vertical"></div>
+                    </div>
+                    
+                    <!-- one block -->
+                    <div class="tm-timeline-item">
+                        <div class="tm-timeline-item-inner">
+                            <img src="{% static 'images/Weather2.jpg' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                            <div class="tm-timeline-connector">
+                                <p class="mb-0">&nbsp;</p>
+                            </div>
+                            <div class="tm-timeline-description-wrap">
+                                <div class="tm-bg-dark-light tm-timeline-description">
+                                    <a href="/weather"><h3 class="tm-text-cyan tm-font-400" style="color: #66D3D7">Weather</h3></a>
+                                    <p>This page provides weather conditions including UV level and lovely tips for users to make a preparation for their working time.</p>
+                                    <!--p class="tm-text-cyan float-right mb-0">Another Story . 9 July 2018</p-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tm-timeline-connector-vertical"></div>
+                    </div>
+                    <!-- one block -->
+                    <div class="tm-timeline-item">
+                        <div class="tm-timeline-item-inner">
+                            <img src="{% static 'images/help2.jpeg' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                            <div class="tm-timeline-connector">
+                                <p class="mb-0">&nbsp;</p>
+                            </div>
+                            <div class="tm-timeline-description-wrap">
+                                <div class="tm-bg-dark-light tm-timeline-description">
+                                    <a href="/legalinfo"><h3 class="tm-text-cyan tm-font-400" style="color: #66D3D7">Accidents Help</h3></a>
+                                    <p>This page indicates that how riders should do when they are involoved in an accident and some legal help for them.</p>
+                                    <!--p class="tm-text-cyan float-right mb-0">Another Story . 9 July 2018</p-->
                                 </div>
                             </div>
                         </div>
@@ -185,10 +275,19 @@
             <!--  horizontal line -->
 
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                <!--div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
                     <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">T-Watch</h3>
                     <ul style="margin-left:60px;list-style: none;">
                         <li><p><a href="/team">Meet our team</a></p></li>
+                    </ul>
+                </div-->
+                <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                    <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Main Functions</h3>
+                    <ul style="margin-left:60px;list-style: none;">
+                        <li><a href="/cityrisk">Risk Analysis</a></li>
+                        <li><a href="/block">Road Closure</a></li>
+                        <li><a href="/showstar">Safety Voting</a></li>
+                        <li><a href="/game">Game</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
@@ -200,10 +299,11 @@
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
-                    <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Contact Us</h3>
+                    <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Seeking Help</h3>
                     <ul style="margin-left:60px;list-style: none;">
-                        <li>T.WatchT.Watch@gmail.com</li>
-                        <li>900 Dandenong Rd,Caulfield East, VIC</li>
+                        <li><a href="https://www.fairwork.gov.au/">Fair Work Australia</a></li>
+                        <li><a href="http://www.twu.com.au/">Transport Workers Union</a></li>
+                        <li><a href="https://www.safeworkaustralia.gov.au/">Safe Work Australia</a></li>
                     </ul>
                 </div>
             </div>
@@ -314,6 +414,178 @@
             a:hover { 
                 color:#FFF; 
             } 
+
+            .css-typing p{
+  font-family: "Courier";
+  font-size: 30px;
+  width: 50em;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-animation: type 1s steps(40, end);
+  animation: type 5s steps(40, end);
+  width: 960px;
+  background: rgba(0,0,0,0.7);
+  text-align: center;
+}
+
+.css-typing p:nth-child(2) {
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-animation: type 1s steps(40, end);
+  animation: type2 5s steps(40, end);
+  -webkit-animation-delay: 5s;
+  animation-delay: 5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.css-typing p:nth-child(3) {
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-animation: type 1s steps(40, end);
+  animation: type3 5s steps(40, end);
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.css-typing p:nth-child(4) {
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-animation: type 1s steps(40, end);
+  animation: type4 5s steps(40, end);
+  -webkit-animation-delay: 15;
+  animation-delay: 15s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes type {
+  from {
+    width: 0;
+  }
+}
+
+@-webkit-keyframes type {
+  from {
+    width: 0;
+  }
+}
+
+span {
+  animation: blink 1s infinite;
+}
+
+@keyframes type2 {
+  0% {
+    width: 0;
+  }
+  from {
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes type2 {
+  0% {
+    width: 0;
+  }
+  from {
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes type3 {
+  0% {
+    width: 0;
+  }
+  from {
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes type3 {
+  0% {
+    width: 0;
+  }
+  from {
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes type4 {
+  0% {
+    width: 0;
+  }
+  from {
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes type4 {
+  0% {
+    width: 0;
+  }
+  from {
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
     </style>
 </body>
 </html>

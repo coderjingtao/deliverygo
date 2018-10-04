@@ -106,6 +106,9 @@ def d3_bubble(request):
 def weather(request):
     return render(request, 'weather.html')
 
+def game(request):
+    return render(request, 'game.html')
+
 # def d3(request):
 #     cities = CityRisk.objects.all()
 #     cities_serilized =  serializers.serialize('json', cities)
@@ -113,3 +116,22 @@ def weather(request):
 
 def page_not_found(request):
     return render(request,'404.html')
+
+# user journey by Chris
+def learnmore(request):
+    return render(request,'userjourney.html')
+
+def legalinfo(request):
+    return render(request,'legalinfo.html')
+
+def info1(request):
+    return render(request,'info1.html')
+
+def info2(request):
+    return render(request,'info2.html')
+
+def info3(request):
+    return render(request,'info3.html')
+
+def info4(request):
+    return render(request,'info4.html')

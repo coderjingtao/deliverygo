@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>T-Watch</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"><!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}"> 
+</head>
+
+<body>
+<!--add by Chris-->
+<div class="navbar navbar-fixed-top custom-navbar" role="navigation">
+    <div class="container">
+        <!-- NAVBAR HEADER -->
+        <div class="navbar-header">
+           <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+           </button>
+           <!-- lOGO -->
+           <div class="tm-site-logo"></div>
+           <a href="/index" class="tm-text-white"><h1 class="pl-4 tm-site-title">DeliveryGo</h1></a>
+        </div>
+
+    <!-- MENU LINKS -->
+    <div class="navbar-header">
+        <ul class="nav pull-right">
+                <li><a href="/index" class="smoothScroll">Home</a></li>
+                <li><a href="/learnmore" class="smoothScroll">About Us</a></li>
+                <li><a href="/cityrisk" class="smoothScroll">Risk Analysis</a></li>  
+                <li><a href="/block" class="smoothScroll">Road Closure</a></li>
+                <li><a href="/weather" class="smoothScroll">Weather</a></li>
+        </ul>
+    </div>
+
+    </div>
+</div> 
+<!--end by Chris -->
+
+    <div class="container">
+
+        <div class="container tm-container-2">
+            
+			<div class="row">
+                <div class="col-lg-12">
+                    <div class="row"><p class="smoothScroll"><a href="/index">Home</a> > <a href="">About Us</a></p></div> 
+                    <h2 class="tm-page-title">Get Involved</h2> 
+                </div>
+            </div>
+
+
+            <div class="row tm-section-mb">
+                <div class="col-lg-12">
+                    <!-- one block -->
+                    <div class=" tm-timeline-item">
+                            <div class="tm-timeline-item-inner">
+                                <img src="{% static 'images/before.jpg' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                                <div class="tm-timeline-connector">
+                                    <p class="mb-0">&nbsp;</p>
+                                </div>
+                                <div class="tm-timeline-description-wrap">
+                                    <div class="tm-bg-dark tm-timeline-description">
+                                        <h3 class="tm-text-green tm-font-400" style="color: #66D3D7">Before Riding</h3>
+                                        <p>Welcome to Melbourne! If you want to be a food delivery rider in Melbourne, 
+                                            you need to know the road rules and have an overview of road conditions. </p>
+                                        <p>Click <a href="/rules" style="color:#66D3D7;text-decoration: underline">Road Rules</a>
+                                            for more information about how to ride in Melbourne.</p>
+                                        <p>Click <a href="/cityrisk" style="color:#66D3D7;text-decoration: underline">Risk Analysis</a>
+                                            for more information about road conditions in different suburbs.</p>
+                                        <p>You can also back to <a href="/index" style="color:#66D3D7;text-decoration: underline">Home Page</a>
+                                            to find the menu in the middle part to get the above information.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--vertical line-->
+                            <div class="tm-timeline-connector-vertical"></div>
+                        </div>
+                        <!-- one block -->
+                        <div class="tm-timeline-item">
+                            <div class="tm-timeline-item-inner">
+                                <img src="{% static 'images/riding.jpg' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                                <div class="tm-timeline-connector">
+                                    <p class="mb-0">&nbsp;</p>
+                                </div>
+                                <div class="tm-timeline-description-wrap">
+                                    <div class="tm-bg-dark-light tm-timeline-description">
+                                        <h3 class="tm-text-cyan tm-font-400" style="color: #66D3D7">While Working</h3>
+                                        <p>Congratulations to start the work! Here are some useful information: </p>
+                                        <p>Click <a href="/block" style="color:#66D3D7;text-decoration: underline">Road Closure</a>
+                                            for real-time information of road closure due to roadworks or emergency.</p>
+                                        <p>Click <a href="/weather" style="color:#66D3D7;text-decoration: underline">Weather</a>
+                                            to get weather conditions, UV level and lovely tips to plan you working day.</p>
+                                        <p>Click <a href="/showstar" style="color:#66D3D7;text-decoration: underline">Road Rating</a>
+                                            to rate road safety based on suburb or review others rating </p> 
+                                        <p>You can also back to <a href="/index" style="color:#66D3D7;text-decoration: underline">Home Page</a>
+                                            to find the above information both on middle and top right part.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tm-timeline-connector-vertical"></div>
+                        </div>
+                        <!-- one block -->
+                        <div class="tm-timeline-item">
+                            <div class="tm-timeline-item-inner">
+                                <img src="{% static 'images/with.jpg' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                                <div class="tm-timeline-connector">
+                                    <p class="mb-0">&nbsp;</p>
+                                </div>
+                                <div class="tm-timeline-description-wrap">
+                                    <div class="tm-bg-dark tm-timeline-description">
+                                        <h3 class="tm-text-yellow tm-font-400" style="color: #66D3D7">With Accidents</h3>
+                                        <p>Having an accidents while working? Don’t worry! </p>
+                                        <p>Check <a href="/legalinfo" style="color:#66D3D7;text-decoration: underline">Legal Help</a>
+                                            to see how to deal with an accidents and how to seek help.</p> 
+                                        <p>You can also back to <a href="/index" style="color:#66D3D7;text-decoration: underline">Home Page</a>
+                                            to find the above information in the middle part.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tm-timeline-connector-vertical"></div>
+                        </div>
+                        <!-- one block -->
+                        <div class="tm-timeline-item">
+                            <div class="tm-timeline-item-inner">
+                                <img src="{% static 'images/fair.jpeg' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                                <div class="tm-timeline-connector">
+                                    <p class="mb-0">&nbsp;</p>
+                                </div>
+                                <div class="tm-timeline-description-wrap">
+                                    <div class="tm-bg-dark-light tm-timeline-description">
+                                        <h3 class="tm-text-orange tm-font-400" style="color: #66D3D7">Fair Work</h3>
+                                        <p>Australian laws provide all employees with basic rights and protection in the workplace. 
+                                            If you think you are treated unfairly, you can seek help from:</p>
+                                        <p><a href="https://www.fairwork.gov.au/" style="color:#66D3D7;text-decoration: underline">Fair Work Australia:</a> 
+                                            an independent body with the power and authority to regulate and enforce provisions relating to minimum wages and employment conditions, 
+                                            enterprise bargaining, industrial action, dispute resolution, and termination of employment</p> 
+                                         <p><a href=Transport Workers Union style="color:#66D3D7;text-decoration: underline">TWU:</a>
+                                            The Transport Workers’ Union has been the collective voice for the men and women working in the Australian transport industry for more than one hundred and twenty years. Their role as a union has always been to secure the best pay, 
+                                            conditions and safety standards for each and every one of their members.</p> 
+                                        <p>You can also back to <a href="/index" style="color:#66D3D7;text-decoration: underline">Home Page</a>
+                                            to find the above links in the bottom part.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tm-timeline-connector-vertical"></div>
+                        </div>
+
+       <!--  horizontal line -->
+
+       <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+            <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Main Functions</h3>
+            <ul style="margin-left:60px;list-style: none;">
+                <li><a href="/cityrisk">Risk Analysis</a></li>
+                <li><a href="/block">Road Closure</a></li>
+                <li><a href="/showstar">Safety Voting</a></li>
+                <li><a href="/game">Game</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+            <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Social Media</h3>
+            <ul style="margin-left:60px;list-style: none;">
+                <li><a href="https://www.facebook.com/TWatch-1092036700954504/?modal=composer">Facebook</a></li>
+                <li><a href="https://twitter.com/TWatch20">Twitter</a></li>
+                <li><a href="https://www.instagram.com/t.watcht.watch/">Instagram</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Seeking Help</h3>
+            <ul style="margin-left:60px;list-style: none;">
+                <li><a href="https://www.fairwork.gov.au/">Fair Work Australia</a></li>
+                <li><a href="http://www.twu.com.au/">Transport Workers Union</a></li>
+                <li><a href="https://www.safeworkaustralia.gov.au/">Safe Work Australia</a></li>
+            </ul>
+        </div>
+    </div>
+<hr>
+
+       <!-- Footer -->
+       <footer class="row mt-5 mb-5">
+        <div class="col-lg-12">
+            <p class="text-center tm-text-gray tm-copyright-text mb-0">Copyright &copy;
+                <span class="tm-current-year">2018</span> T-Watch Ltd.  | Designer: T-Watch Team 
+            </p>
+        </div>
+    </footer>
+</div>
+<!-- .container -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<!-- <script src="js/jquery-3.2.1.slim.min.js"></script> -->
+<script src="{% static 'js/templatemo-script.js' %}"></script>
+<style>
+        a { color: #FFF; }
+        a:hover { 
+            color:#FFF; 
+        } 
+</style>
+</body>
+</html>

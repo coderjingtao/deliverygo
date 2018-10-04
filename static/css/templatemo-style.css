@@ -155,6 +155,8 @@ h3 {
 
 .tm-video-text {
     display: inline-block;
+    margin: 100px auto;
+    text-align: center;
 }
 
 .tm-welcome-video {
@@ -171,7 +173,6 @@ h3 {
 
 .tm-video-text-overlay {
     position: absolute;
-    left: 30%;
     bottom: 300px;
 }
 
@@ -210,6 +211,32 @@ a.tm-text-white:hover,
 a.tm-text-white:focus {
     color: #FFFFFF;
 }
+
+
+
+
+/* User Journey by Chris */
+.user-container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+
+
+
+
 
 .tm-text-green {
     color: #66D3D7;

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>T-Watch</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"><!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}"> 
+    <style>
+        a.hover:hover{text-decoration: underline}
+    </style>
+</head>
+
+<body>
+<!--add by liu-->
+<div class="navbar navbar-fixed-top custom-navbar" role="navigation">
+    <div class="container">
+        <!-- NAVBAR HEADER -->
+        <div class="navbar-header">
+           <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+           </button>
+           <!-- lOGO -->
+           <div class="tm-site-logo"></div>
+           <a href="/index" class="tm-text-white"><h1 class="pl-4 tm-site-title">DeliveryGo</h1></a>
+        </div>
+
+      <!-- MENU LINKS -->
+    <!-- MENU LINKS -->
+    <div class="navbar-header">
+        <ul class="nav pull-right">
+                <li><a href="/index" class="smoothScroll">Home</a></li>
+                <li><a href="/learnmore" class="smoothScroll">About Us</a></li>
+                <li><a href="/cityrisk" class="smoothScroll">Risk Analysis</a></li>  
+                <li><a href="/block" class="smoothScroll">Road Closure</a></li>
+                <li><a href="/weather" class="smoothScroll">Weather</a></li>
+        </ul>
+    </div>
+    </div>
+</div> 
+<!--end by liu -->
+		
+        <div class="container tm-container-2">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row"><p class="smoothScroll"><a href="/index">Home</a> > <a href="/legalinfo">Accidents Help</a> > <a href="">Legal Help</a></p></div>  
+                </div>
+            </div>
+            <div class="row tm-section-mb">
+                <div class="col-lg-12">
+                    <!-- one block -->
+                    <div class=" tm-timeline-item">
+                            <div class="tm-timeline-item-inner2">
+                                <img src="{% static 'images/help1.jpg' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                                <div class="tm-timeline-connector">
+                                    <p class="mb-0">&nbsp;</p>
+                                </div>
+                                <div class="tm-timeline-description-wrap">
+                                    <div class="tm-bg-dark tm-timeline-description">
+                                            <p style="color:#66D3D7;font-size:160%">Monash Law Clinics</p>
+                                            <p>The expansion of Monash Law Clinics in the Melbourne CBD, Clayton, and in partnership with Springvale Monash Legal Service (SMLS) underscores the commitment of Monash Law to assisting vulnerable members of our community, 
+                                                whilst educating our students in practical, ethical and professional legal practice.</p>
+                                            <p>Location:
+                                              <ul>
+                                                    <li>Clayton: 60 Beddoe Avenue, Clayton, Victoria 3168</li>
+                                                    <li>(CBD)Level 11, 555 Lonsdale Street , Melbourne, Victoria 3000</li>
+                                              </ul>
+                                            </p>
+                                            <p>Opening Hours:
+                                              <ul>
+                                                    <li>Clayton: 9am - 5pm (Mon to Fri)</li>
+                                                    <li>Melbourne CBD: 9am - 5pm (Mon/ Tues)</li>
+                                                    <li>Contact Details: Phone: 1800 860 333; Fax: (03) 9905 1113</li>
+                                             </ul>
+                                            </p>
+                                            <p>Contacts Details:
+                                              <ul>
+                                                    <li>Phone: 1800 860 333</li>
+                                                    <li>Fax:(03) 9905 1113 </li>
+                                                    <li>Webiste: <a href="https://www.monashlawclinics.com.au/" class="smoothScroll" style="color:#66D3D7;text-decoration: underline">Monash Law Clinics</a></li>
+                                              </ul>
+                                            </p>
+                                            <!-- second para-->
+                                            <p style="color:#66D3D7;font-size:160%">Inner Melbourne community legal</p>
+                                            <p>Inner Melbourne Community Legal is a not-for profit community organisation that provides free legal assistance to disadvantaged people in the City of Melbourne area. 
+                                                It is a member of the Federation of Community Legal Centres and the National Association of Community Legal Centres.</p>
+                                            <p>Location: 2/508 Queensberry Street North Melbourne VIC 3051</p>
+                                            <p>Opening Hours:
+                                              <ul>
+                                                    <li>9am - 5pm (Mon to Fri)</li>
+                                                    <li>Closed for lunch between 1:00pm – 1:30pm.</li>
+                                             </ul>
+                                            </p>
+                                            <p>Contacts Details:
+                                              <ul>
+                                                    <li>Phone: （03）9328 1885 </li>
+                                                    <li>Webiste: <a href="https://imcl.org.au/" class="smoothScroll" style="color:#66D3D7;text-decoration: underline">Inner Melbourne community legal</a></li>
+                                              </ul>
+                                            </p>
+                                            <!-- third para-->
+                                            <p style="color:#66D3D7;font-size:160%">Federation of Community Legal Centres (Vic)</p>
+                                            <p>The Federation of Community Legal Centres (Victoria) is the peak body for 49 community legal centres (CLCs) across Victoria. 
+                                                As the peak body for community legal centres, they lead and support excellence in the community legal sector, 
+                                                promote the purpose and value of community legal centres, and advance social justice and a fair legal system. Community legal centres are independent, 
+                                                not for profit community organisations that provide free legal and related services to the public, with a focus on disadvantaged, vulnerable and marginalised community members.</p>
+                                            <p>Location: Level 3/225 Bourke St, Melbourne VIC 3000</p>
+                                            <p>Opening Hours: 9am - 5pm (Mon to Fri)</p>
+                                            <p>Contacts Details:
+                                              <ul>
+                                                    <li>Phone: (03) 9652 1500 </li>
+                                                    <li>Fax: (03) 9654 5294 </li>
+                                                    <li>Email: adminisatration@fclc.org.au </li>
+                                                    <li>Webiste: <a href="https://www.fclc.org.au/" class="smoothScroll" style="color:#66D3D7;text-decoration: underline">Federation of Community Legal Centres (Vic)</a></li>
+                                              </ul>
+                                            </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+					<!-- one block end-->	
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                        <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Main Functions</h3>
+                        <ul style="margin-left:60px;list-style: none;">
+                            <li><a href="/cityrisk">Risk Analysis</a></li>
+                            <li><a href="/block">Road Closure</a></li>
+                            <li><a href="/showstar">Safety Voting</a></li>
+                            <li><a href="/game">Game</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                        <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Social Media</h3>
+                        <ul style="margin-left:60px;list-style: none;">
+                            <li><a href="https://www.facebook.com/TWatch-1092036700954504/?modal=composer">Facebook</a></li>
+                            <li><a href="https://twitter.com/TWatch20">Twitter</a></li>
+                            <li><a href="https://www.instagram.com/t.watcht.watch/">Instagram</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Seeking Help</h3>
+                        <ul style="margin-left:60px;list-style: none;">
+                            <li><a href="https://www.fairwork.gov.au/">Fair Work Australia</a></li>
+                            <li><a href="http://www.twu.com.au/">Transport Workers Union</a></li>
+                            <li><a href="https://www.safeworkaustralia.gov.au/">Safe Work Australia</a></li>
+                        </ul>
+                    </div>
+                </div>
+        <hr>
+        <!-- Footer -->
+        <footer class="row mt-5 mb-5">
+            <div class="col-lg-12">
+                <p class="text-center tm-text-gray tm-copyright-text mb-0">Copyright &copy;
+                    <span class="tm-current-year">2018</span> T-Watch Ltd.  | Designer: T-Watch Team 
+                </p>
+            </div>
+        </footer>
+    </div>
+    <!-- .container -->
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <!-- <script src="js/jquery-3.2.1.slim.min.js"></script> -->
+    <script src="{% static 'js/templatemo-script.js' %}"></script>
+    <style>
+            a { color: #FFF; }
+            a:hover { 
+                color:#FFF; 
+            } 
+    </style>
+</body>
+</html>

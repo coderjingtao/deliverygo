@@ -39,6 +39,13 @@ urlpatterns = [
     path('d3_bubble/',views.d3_bubble),
     path('weather/',views.weather),
     #re_path(r'^',views.index),
+    path('learnmore/',views.learnmore),
+    path('legalinfo/',views.legalinfo),
+    path('info1/',views.info1),
+    path('info2/',views.info2),
+    path('info3/',views.info3),
+    path('info4/',views.info4),
+    path('game/',views.game),
 ]
 
 hander404 = 'comment.views.page_not_found'
