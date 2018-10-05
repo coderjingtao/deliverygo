@@ -109,6 +109,9 @@ def weather(request):
 def game(request):
     return render(request, 'game.html')
 
+def music(request):
+    return render(request, 'music.html')
+
 # def d3(request):
 #     cities = CityRisk.objects.all()
 #     cities_serilized =  serializers.serialize('json', cities)
