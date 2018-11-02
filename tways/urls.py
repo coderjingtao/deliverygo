@@ -47,6 +47,7 @@ urlpatterns = [
     path('info4/',views.info4),
     path('game/',views.game),
     path('music/',views.music),
+    path('battle/',views.battle),
 ]
 
 hander404 = 'comment.views.page_not_found'

@@ -86,9 +86,15 @@
                     <li><a href="/learnmore" class="smoothScroll">About Us</a></li>
                     <li><a href="/cityrisk" class="smoothScroll">Risk Analysis</a></li>  
                     <li><a href="/block" class="smoothScroll">Road Closure</a></li>
-                    <li><a href="/weather" class="smoothScroll">Weather</a></li>
+                    <li>
+                        <a href="/weather" class="smoothScroll">
+                            <img src="https://w.bookcdn.com/weather/picture/26_30354_1_1_3498db_250_2980b9_ffffff_ffffff_1_2071c9_ffffff_0_6.png?scode=124&domid=&anc_id=44124"/>
+                        </a>
+                    </li>
+                    <!--
                     <li><a href="/game" class="smoothScroll">Game</a></li>
                     <li><a href="/music" target="_blank" class="smoothScroll">Music</a></li>
+                    -->
                </ul>
           </div>
 		</div>
@@ -132,7 +138,7 @@
          <div class="row">
         <div class="imcenterded">
                 <div class="usercontainer">
-                <img src="{% static 'images/journey1.jpeg' %}" alt="Image">
+                <img src="{% static 'images/journey1.jpg' %}" alt="Image">
                 <div class="usercentered">
                     <h1>
                         <div class="css-typing">
@@ -145,6 +151,8 @@
                         </div>
                     </h1>
                 </div>
+                <!-- Reference by Chris-->
+                <h6><p class="font-italic">Source：<a href="https://www.theaustralian.com.au/news/inquirer/the-hunger-games-at-work-how-food-delivery-drivers-are-paid/news-story/089a3bdbdaae3887aea57b0c1d1b9554">The Australian</a></p></h6>
             </div>
         </div>
     </div>
@@ -186,7 +194,7 @@
                             </div>
                             <div class="tm-timeline-description-wrap">
                                 <div class="tm-bg-dark-light tm-timeline-description">
-                                    <a href="/cityrisk"><h3 class="tm-text-cyan tm-font-400" style="color: #66D3D7">Regional Risk Analysiss</h3></a>
+                                    <a href="/cityrisk"><h3 class="tm-text-cyan tm-font-400" style="color: #66D3D7">Regional Risk Analysis</h3></a>
                                     <p>A graphical analysis of the crashes in Melbourne. This would help riders to understand their delivery area much better.</p>
                                     <!--p class="tm-text-cyan float-right mb-0">Another Story . 9 July 2018</p-->
                                 </div>
@@ -216,29 +224,12 @@
                     <!-- one block -->
                     <div class="tm-timeline-item">
                         <div class="tm-timeline-item-inner">
-                            <img src="{% static 'images/Weather2.jpg' %}" alt="Image" class="rounded-circle tm-img-timeline">
-                            <div class="tm-timeline-connector">
-                                <p class="mb-0">&nbsp;</p>
-                            </div>
-                            <div class="tm-timeline-description-wrap">
-                                <div class="tm-bg-dark-light tm-timeline-description">
-                                    <a href="/weather"><h3 class="tm-text-cyan tm-font-400" style="color: #66D3D7">Weather</h3></a>
-                                    <p>A summarized weather report including precipitation level, UV level and humidity indicator to make informed decisions before heading on to a ride.</p>
-                                    <!--p class="tm-text-cyan float-right mb-0">Another Story . 9 July 2018</p-->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tm-timeline-connector-vertical"></div>
-                    </div>
-                    <!-- one block -->
-                    <div class="tm-timeline-item">
-                        <div class="tm-timeline-item-inner">
                             <img src="{% static 'images/help2.jpeg' %}" alt="Image" class="rounded-circle tm-img-timeline">
                             <div class="tm-timeline-connector">
                                 <p class="mb-0">&nbsp;</p>
                             </div>
                             <div class="tm-timeline-description-wrap">
-                                <div class="tm-bg-dark tm-timeline-description">
+                                <div class="tm-bg-dark-light tm-timeline-description">
                                     <a href="/legalinfo"><h3 class="tm-text-cyan tm-font-400" style="color: #66D3D7">Accidents Help</h3></a>
                                     <p>A legal advice from trusted advocates when involved in an accident. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                                     <!--p class="tm-text-cyan float-right mb-0">Another Story . 9 July 2018</p-->
@@ -257,30 +248,44 @@
                                 <p class="mb-0">&nbsp;</p>
                             </div>
                             <div class="tm-timeline-description-wrap">
-                                <div class="tm-bg-dark-light tm-timeline-description">
+                                <div class="tm-bg-dark tm-timeline-description">
                                     <a href="/showstar"><h3 class="tm-text-orange tm-font-400" style="color: #66D3D7">Suburb Safety Star Ratings</h3></a>
                                     <p>Reviews about the safety conditions in different suburbs. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                                     <!--p class="tm-text-orange float-right mb-0">New Project . 22 June 2018</p-->
                                 </div>
                             </div>
                         </div>
+                        <div class="tm-timeline-connector-vertical"></div>
                     </div>
-					<!-- one block end-->	
+                    <!-- one block end-->	
+                    
+                    <!-- one block -->
+                    <div class="tm-timeline-item">
+                        <div class="tm-timeline-item-inner">
+                            <img src="{% static 'images/Weather2.jpg' %}" alt="Image" class="rounded-circle tm-img-timeline">
+                                <div class="tm-timeline-connector">
+                                    <p class="mb-0">&nbsp;</p>
+                                </div>
+                                <div class="tm-timeline-description-wrap">
+                                    <div class="tm-bg-dark-light tm-timeline-description">
+                                        <a href="/weather"><h3 class="tm-text-cyan tm-font-400" style="color: #66D3D7">Weather</h3></a>
+                                        <p>A summarized weather report including precipitation level, UV level and humidity indicator to make informed decisions before heading on to a ride.</p>
+                                        <!--p class="tm-text-cyan float-right mb-0">Another Story . 9 July 2018</p-->
+                                    </div>
+                                </div>
+                        </div>
+                                                
+                    </div>
                 </div>
             </div>
             <!--  horizontal line -->
 
             <div class="row">
-                <!--div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
-                    <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">T-Watch</h3>
-                    <ul style="margin-left:60px;list-style: none;">
-                        <li><p><a href="/team">Meet our team</a></p></li>
-                    </ul>
-                </div-->
                 <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
                         <h3 class="mt-2 mb-3 tm-text-gray" style="margin-left:100px">Leisure Functions</h3>
                         <ul style="margin-left:60px;list-style: none;">
-                            <li><a href="/game">Game</a></li>
+                            <li><a href="/game">DeliveryMan GO</a></li>
+                            <li><a href="/battle">Battle City</a></li>
                             <li><a href="/music" target="_blank">Music</a></li>
                         </ul>
                 </div>
@@ -302,36 +307,6 @@
                 </div>
             </div>
         <hr>
-            <!--
-            <div class="row tm-section-mt">
-                <div class="col-lg-6">
-                    <h3 class="mb-4 tm-text-gray">Our Location</h3>
-                    
-                    <div id="google-map" class="text-center mb-5">
-						<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12596.924400839398!2d145.03614355338135!3d-37.878277825450226!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad6698cb33e0ac1%3A0x63f9134ad6bf7a0a!2sMonash+University!5e0!3m2!1sen!2sau!4v1533815485319" width="600" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-                   </div>
-               </div>
-               <div class="col-lg-6 mb-5">
-                <h3 class="mb-4 tm-text-gray">Contact Us</h3>
-                <form action="#contact" method="post" class="tm-contact-form">
-                    <div class="row">
-                        <div class="form-group col-xl-6">
-                            <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name..." required/>
-                        </div>
-                        <div class="form-group col-xl-6">
-                            <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email..." required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="contact_message" name="contact_message" class="form-control" rows="6" placeholder="Your Message..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn tm-btn-send" onclick="alert('Sorry, This Function has not completed!');return;">Send It</button>
-                </form>
-            </div> 
-        </div>
-
-        <hr>
-        -->
         <!-- Footer -->
         <footer class="row mt-5 mb-5">
             <div class="col-lg-12">

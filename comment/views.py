@@ -112,6 +112,9 @@ def game(request):
 def music(request):
     return render(request, 'music.html')
 
+def battle(request):
+    return render(request, 'battle.html')
+
 # def d3(request):
 #     cities = CityRisk.objects.all()
 #     cities_serilized =  serializers.serialize('json', cities)
